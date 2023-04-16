@@ -127,7 +127,7 @@
 !$AzureServiceEndpoint_png = $NB_AZURE_PLANTUML_DIS + "/Networking/AzureServiceEndpoin.png"
 !$AzureServiceEndpointPolicy_png = $NB_AZURE_PLANTUML_DIS + "/Networking/AzureServiceEndpointPolic.png"
 !$AzureSubnet_png = $NB_AZURE_PLANTUML_DIS + "/Networking/AzureSubne.png"
-!$AzureTrafficManager_png = $NB_AZURE_PLANTUML_DIS + "/Networking/AzureTrafficManage.png"
+!$AzureTrafficManager_png = $NB_AZURE_PLANTUML_DIS + "/Networking/AzureTrafficManager.png"
 !$AzureVirtualNetwork_png = $NB_AZURE_PLANTUML_DIS + "/Networking/AzureVirtualNetwor.png"
 !$AzureVirtualNetworkPeering_png = $NB_AZURE_PLANTUML_DIS + "/Networking/AzureVirtualNetworkPeerin.png"
 !$AzureVirtualWAN_png = $NB_AZURE_PLANTUML_DIS + "/Networking/AzureVirtualWA.png"
