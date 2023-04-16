@@ -282,7 +282,7 @@
 "AzureQueueStorage" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureQueueStorage.png",
 "AzureStorage" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureStorage.png",
 "AzureStorageClassic" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureStorageClassic.png",
-"AzureStorageContainer" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureStorageContainer.png"
+"AzureStorageContainer" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureStorageContainer.png",
 "AzureStorSimple" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureStorSimple.png"
  }
   ]
