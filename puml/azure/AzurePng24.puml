@@ -263,7 +263,7 @@
 "AzureProperties" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/web/AzureProperties.png",
 "AzureQuota" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/web/AzureQuota.png",
 "AzureSearch" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/web/AzureSearch.png",
-"AzureWebApp" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/web/AzureWebApp.png"
+"AzureWebApp" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/web/AzureWebApp.png"}
   ]
   }
 
