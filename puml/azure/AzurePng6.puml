@@ -68,7 +68,7 @@
 !$AzureWebSlot_png = $NB_AZURE_PLANTUML_DIS + "/Compute/AzureWebSlot.png"
 !$AzureWebTest_png = $NB_AZURE_PLANTUML_DIS + "/Compute/AzureWebTest.png"
 
-"--- Container ----
+' --- Container ----
 
 !$AzureContainerApp_png = $NB_AZURE_PLANTUML_DIS + "/Containers/AzureContainerApp.png"
 !$AzureContainerInstance_png = $NB_AZURE_PLANTUML_DIS + "/Containers/AzureContainerInstance.png"
@@ -76,13 +76,13 @@
 !$AzureKubernetesService_png = $NB_AZURE_PLANTUML_DIS + "/Containers/AzureKubernetesService.png"
 !$AzureServiceEnvironment_png = $NB_AZURE_PLANTUML_DIS + "/Containers/AzureServiceEnvironment.png"
 
-"--- Ceneral ----
+' --- Ceneral ----
 
 !$Azure_png = $NB_AZURE_PLANTUML_DIS + "/General/Azure.png"
 !$AzureWorkbook_png = $NB_AZURE_PLANTUML_DIS + "/General/AzureWorkbook.png"
 !$AzureWorkflow_png = $NB_AZURE_PLANTUML_DIS + "/General/AzureWorkflow.png"
 
-"--- Identity ----
+' --- Identity ----
 !$AzureActiveDirectory_png = $NB_AZURE_PLANTUML_DIS + "/Identity/AzureActiveDirectory.png"
 !$AzureActiveDirectoryB2C_png = $NB_AZURE_PLANTUML_DIS + "/Identity/AzureActiveDirectoryB2C.png"
 !$AzureActiveDirectoryConnectHealth_png = $NB_AZURE_PLANTUML_DIS + "/Identity/AzureActiveDirectoryConnectHealth.png"
