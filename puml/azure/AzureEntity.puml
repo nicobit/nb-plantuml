@@ -17,9 +17,9 @@ skinparam rectangle<<e_stereo>> {
 ' ##################################
 
 !definelong AzureEntity(e_alias, e_label, e_techn, e_color, e_sprite, e_stereo)
-rectangle "<color:e_color><img:https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/diste_sprite.png{scale=AZURE_PNG_ICON_SCALE}></color>\n\n==e_label" <<e_stereo>> as e_alias
+rectangle "<color:e_color><img:$e_sprite_png{scale=AZURE_PNG_ICON_SCALE}></color>\n\n==e_label" <<e_stereo>> as e_alias
 !enddefinelong
 
 !definelong AzureEntity(e_alias, e_label, e_techn, e_descr, e_color, e_sprite, e_stereo)
-rectangle "<color:e_color><img:https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/diste_sprite.png{scale=AZURE_PNG_ICON_SCALE}></color>\n\n==e_label" <<e_stereo>> as e_alias
+rectangle "<color:e_color><img:$e_sprite_png{scale=AZURE_PNG_ICON_SCALE}></color>\n\n==e_label" <<e_stereo>> as e_alias
 !enddefinelong
