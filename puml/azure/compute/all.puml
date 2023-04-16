@@ -1,4 +1,3 @@
-@startuml
 
 ' --- AIMachineLearning ----
 
@@ -134,4 +133,3 @@ AzureVirtualNetworkPeerin_png = '/Networking/AzureVirtualNetworkPeerin.png'
 AzureVirtualWA_png = '/Networking/AzureVirtualWA.png'
 AzureVPNGatewa_png = '/Networking/AzureVPNGatewa.png'
 
-@enduml
