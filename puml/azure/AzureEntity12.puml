@@ -21,7 +21,7 @@ skinparam rectangle<<e_stereo>> {
 !endfunction
 
 !definelong AzureEntity(e_alias, e_label, e_techn, e_color, e_sprite, e_stereo)
-rectangle "<color:e_color><img:<$e_sprite_png>{scale=AZURE_PNG_ICON_SCALE}></color>\n\n==e_label-<$e_sprite_png>-e_sprite" <<e_stereo>> as e_alias
+rectangle "<color:e_color><img:<$e_sprite_png>{scale=AZURE_PNG_ICON_SCALE}></color>\n\n==e_label-<$e_sprite_png>-e_sprite-$AzureTrafficManager_png" <<e_stereo>> as e_alias
 !enddefinelong
 
 !definelong AzureEntity(e_alias, e_label, e_techn, e_descr, e_color, e_sprite, e_stereo)
