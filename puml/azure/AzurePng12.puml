@@ -132,3 +132,5 @@
 !$AzureVirtualNetworkPeering_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureVirtualNetworkPeerin.png"
 !$AzureVirtualWAN_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureVirtualWA.png"
 !$AzureVPNGateway_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureVPNGatewa.png"
+
+!$NBAzurePNG = { "AzureTrafficManager" : $AzureTrafficManager_png }
