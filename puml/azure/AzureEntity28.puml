@@ -26,6 +26,6 @@ AzureEntity_ext(e_alias, e_label, e_techn, e_color, e_sprite, e_stereo,$e_image)
 
 
 !definelong AzureEntity_ext(e_alias, e_label, e_techn, e_color, e_sprite, e_stereo,e_img)
-rectangle "<color:e_color><img:<$e_img>{scale=AZURE_PNG_ICON_SCALE}></color>\n\n==e_label-<$e_img>-e_img" <<e_stereo>> as e_alias
+rectangle "<color:e_color><img:$e_img{scale=AZURE_PNG_ICON_SCALE}></color>\n\n==e_label-$e_img-e_img" <<e_stereo>> as e_alias
 !enddefinelong
 
