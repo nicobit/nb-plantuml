@@ -134,7 +134,7 @@
 !$AzureVPNGateway_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureVPNGatewa.png"
 
 
-!$NBAzurePNG" = { "Icons":[
+!$NBAzurePNG = { "Icons":[
   { "AzureTrafficManager" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureTrafficManager.png" }
   ]
   }
