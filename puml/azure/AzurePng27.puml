@@ -270,7 +270,7 @@
  "AzureServiceBusQueue" :"https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/IntegrationAzureServiceBusQueue.png",
  "AzureServiceBus" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/IntegrationAzureServiceBus.png",
 "AzureServiceBusTopic" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/IntegrationAzureServiceBusTopic.png",
-"AzureSystemTopi" :c"https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/IntegrationAzureSystemTopi.png"
+"AzureSystemTopi" :"https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/IntegrationAzureSystemTopi.png"
  }
   ]
   }
