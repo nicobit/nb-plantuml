@@ -1,0 +1,41 @@
+@startuml
+
+' --- AIMachineLearning ----
+
+!define AzureBatchAI_png = '/AIMachineLearning/AzureBatchAI.png'
+!define AzureBotService_png = '/AIMachineLearning/AzureBotService.png'
+!define AzureCognitiveServices_png = '/AIMachineLearning/AzureCognitiveServices.png'
+!define AzureMachineLearningService_png = '/AIMachineLearning/AzureMachineLearningService.png'
+!define AzureMachineLearningStudio_png = '/AIMachineLearning/AzureMachineLearningStudio.png'
+!define AzureMachineLearningStudioClassic_png = '/AIMachineLearning/AzureMachineLearningStudioClassic.png'
+!define AzureMachineLearningStudioWebServicePlan_png = '/AIMachineLearning/AzureMachineLearningStudioWebServicePlan.png'
+!define AzureMachineLearningStudioWorkspace_png = '/AIMachineLearning/AzureMachineLearningStudioWorkspace.png'
+!define AzureTranslatorText_png = '/AIMachineLearning/AzureTranslatorText.png'
+
+' --- Databases ----
+
+AzureCosmosDb_png = /Databases/AzureCosmosDb.png'
+AzureDatabaseForMariaDB_png = /Databases/AzureDatabaseForMariaDB.png'
+AzureDatabaseForMySQL_png = /Databases/AzureDatabaseForMySQL.png'
+AzureDatabaseForPostgreSQL_png = /Databases/AzureDatabaseForPostgreSQL.png'
+AzureDatabaseMigrationService_png = /Databases/AzureDatabaseMigrationService.png'
+AzureDataBricks_png = /Databases/AzureDataBricks.png'
+AzureDataExplorerCluster_png = /Databases/AzureDataExplorerCluster.png'
+AzureDataFactory_png = /Databases/AzureDataFactory.png'
+AzureInstancePool_png = /Databases/AzureInstancePool.png'
+AzureManagedDatabase_png = /Databases/AzureManagedDatabase.png'
+AzureRedisCache_png = /Databases/AzureRedisCache.png'
+AzureSql_png = /Databases/AzureSql.png'
+AzureSqlDatabase_png = /Databases/AzureSqlDatabase.png'
+AzureSqlDataWarehouse_png = /Databases/AzureSqlDataWarehouse.png'
+AzureSqlElasticPool_png = /Databases/AzureSqlElasticPool.png'
+AzureSqlManagedInstance_png = /Databases/AzureSqlManagedInstance.png'
+AzureSqlServer_png = /Databases/AzureSqlServer.png'
+AzureSqlStretchDatabase_png = /Databases/AzureSqlStretchDatabase.png'
+AzureSqlVirtualMachine_png = /Databases/AzureSqlVirtualMachine.png'
+AzureSSISLiftAndShift_png = /Databases/AzureSSISLiftAndShift.png'
+AzureVirtualCluster_png = /Databases/AzureVirtualCluster.png'
+
+
+
+@enduml
