@@ -270,7 +270,20 @@
  "AzureServiceBusQueue" :"https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Integration/AzureServiceBusQueue.png",
  "AzureServiceBus" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Integration/AzureServiceBus.png",
 "AzureServiceBusTopic" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Integration/AzureServiceBusTopic.png",
-"AzureSystemTopi" :"https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Integration/AzureSystemTopi.png"
+"AzureSystemTopi" :"https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Integration/AzureSystemTopi.png",
+"AzureBlobStorage" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureBlobStorage.png",
+"AzureDataBox" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureDataBox.png",
+"AzureDataLakeStorage" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureDataLakeStorage.png",
+"AzureDiskStorage" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureDiskStorage.png",
+"AzureDiskStorageClassic" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureDiskStorageClassic.png",
+"AzureFileStorage" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureFileStorage.png",
+"AzureManagedDisks" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureManagedDisks.png",
+"AzureNetAppFiles" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureNetAppFiles.png",
+"AzureQueueStorage" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureQueueStorage.png",
+"AzureStorage" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureStorage.png",
+"AzureStorageClassic" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureStorageClassic.png",
+"AzureStorageContainer" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureStorageContainer.png"
+"AzureStorSimple" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureStorSimple.png"
  }
   ]
   }
