@@ -23,11 +23,7 @@ skinparam rectangle<<e_stereo>> {
 AzureEntity_ext(e_alias, e_label, e_techn, e_color, e_sprite, $e_stereo,$e_image)
 !enddefinelong
 
-!define AzureEntity(e_alias, e_label, e_techn, e_descr, e_color, e_sprite, e_stereo) 
-!local $tempB = "" + $e_stereo
-!local $e_imageA = $NBAzurePNG.Icons[0][$tempB]
-AzureEntity_ext(e_alias, e_label, e_techn, e_color, e_sprite, $e_stereo,$e_imageA)
-!enddefinelong
+!define AzureEntity(e_alias, e_label, e_techn, e_descr, e_color, e_sprite, e_stereo) AzureEntity(e_alias, e_label, e_techn, e_color, e_sprite, $e_stereo)
 
 !definelong AzureEntity_ext(e_alias, e_label, e_techn, e_color, e_sprite, e_stereo,e_img)
 rectangle "<color:e_color><img:e_img{scale=AZURE_PNG_ICON_SCALE}></color>\ne_label\n[e_techn]" <<e_stereo>> as e_alias
