@@ -11,7 +11,7 @@ skinparam rectangle<<e_stereo>> {
 }
 !enddefinelong
 
-!define AZURE_PNG_ICON_SCALE = "0.5"
+!define AZURE_PNG_ICON_SCALE 0.5
 
 ' Overwriting Elements
 ' ##################################
