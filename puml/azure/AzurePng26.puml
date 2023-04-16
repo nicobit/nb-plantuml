@@ -264,11 +264,10 @@
 "AzureQuota" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/web/AzureQuota.png",
 "AzureSearch" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/web/AzureSearch.png",
 "AzureWebApp" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/web/AzureWebApp.png",
-"AzureBizTalk" :k"https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/IntegrationAzureBizTalk.png",
- "AzureEventGrid" :d"https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/IntegrationAzureEventGrid.png",
- "AzureEventGridDomain" :n"https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/IntegrationAzureEventGridDomain.png",
- "AzureServiceBusQueue" :e"https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/IntegrationAzureServiceBusQueue.png"
-}
+"AzureBizTalk" :"https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/IntegrationAzureBizTalk.png",
+ "AzureEventGrid" :"https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/IntegrationAzureEventGrid.png",
+ "AzureEventGridDomain" :"https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/IntegrationAzureEventGridDomain.png",
+ "AzureServiceBusQueue" :"https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/IntegrationAzureServiceBusQueue.png"}
   ]
   }
 
