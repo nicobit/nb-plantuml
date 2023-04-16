@@ -1,0 +1,8 @@
+@startuml
+
+!define C4_Path https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master
+!includeurl C4_Path/C4_Context.puml
+!includeurl C4_Path/C4_Container.puml
+!includeurl C4_Path/C4_Component.puml
+
+@enduml
