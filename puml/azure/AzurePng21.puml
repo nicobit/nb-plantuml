@@ -249,7 +249,21 @@
  "AzureVirtualNetwork" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureVirtualNetwor.png",
  "AzureVirtualNetworkPeering" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureVirtualNetworkPeerin.png",
  "AzureVirtualWAN" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureVirtualWA.png",
- "AzureVPNGateway" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureVPNGatewa.png"}
+ "AzureVPNGateway" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureVPNGatewa.png"},
+  "AzureBatchAI" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/AIMachineLearning/AzureBatchAI.png",
+"AzureAdvancedTools" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/web/AzureAdvancedTools.png",
+"AzureAPIManagement" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/web/AzureAPIManagement.png",
+"AzureAppServiceCertificate" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/web/AzureAppServiceCertificate.png",
+"AzureAppServiceDomain" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/web/AzureAppServiceDomain.png",
+"AzureCDN" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/web/AzureCDN.png",
+"AzureContainerSettings" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/web/AzureContainerSettings.png",
+"AzureCORS" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/web/AzureCORS.png",
+"AzureDeploymentCredentials" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/web/AzureDeploymentCredentials.png",
+"AzureLogStream" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/web/AzureLogStream.png",
+"AzureProperties" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/web/AzureProperties.png",
+"AzureQuota" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/web/AzureQuota.png",
+"AzureSearch" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/web/AzureSearch.png",
+"AzureWebApp" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/web/AzureWebApp.png"
   ]
   }
 
