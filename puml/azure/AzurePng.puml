@@ -250,7 +250,7 @@
  "AzureVirtualNetworkPeering" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureVirtualNetworkPeerin.png",
  "AzureVirtualWAN" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureVirtualWA.png",
  "AzureVPNGateway" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureVPNGatewa.png",
-  "AzureBatchAI" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/AIMachineLearning/AzureBatchAI.png",
+  
 "AzureAdvancedTools" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Web/AzureAdvancedTools.png",
 "AzureAPIManagement" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Web/AzureAPIManagement.png",
 "AzureAppServiceCertificate" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Web/AzureAppServiceCertificate.png",
