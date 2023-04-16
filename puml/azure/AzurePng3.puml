@@ -1,134 +1,134 @@
-!define NB_AZURE_PLANTUML_DIS  https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist
+!$NB_AZURE_PLANTUML_DIS = "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist"
 ' --- AIMachineLearning ----
 
-!define AzureBatchAI  NB_AZURE_PLANTUML_DIS /AIMachineLearning/AzureBatchAI.png
-!define AzureBotService  NB_AZURE_PLANTUML_DIS /AIMachineLearning/AzureBotService.png
-!define AzureCognitiveServices  NB_AZURE_PLANTUML_DIS /AIMachineLearning/AzureCognitiveServices.png
-!define AzureMachineLearningService  NB_AZURE_PLANTUML_DIS /AIMachineLearning/AzureMachineLearningService.png
-!define AzureMachineLearningStudio  NB_AZURE_PLANTUML_DIS /AIMachineLearning/AzureMachineLearningStudio.png
-!define AzureMachineLearningStudioClassic  NB_AZURE_PLANTUML_DIS /AIMachineLearning/AzureMachineLearningStudioClassic.png
-!define AzureMachineLearningStudioWebServicePlan  NB_AZURE_PLANTUML_DIS /AIMachineLearning/AzureMachineLearningStudioWebServicePlan.png
-!define AzureMachineLearningStudioWorkspace  NB_AZURE_PLANTUML_DIS /AIMachineLearning/AzureMachineLearningStudioWorkspace.png
-!define AzureTranslatorText  NB_AZURE_PLANTUML_DIS /AIMachineLearning/AzureTranslatorText.png
+!$AzureBatchAI_png = $NB_AZURE_PLANTUML_DIS + '/AIMachineLearning/AzureBatchAI.png'
+!$AzureBotService_png = $NB_AZURE_PLANTUML_DIS + '/AIMachineLearning/AzureBotService.png'
+!$AzureCognitiveServices_png = $NB_AZURE_PLANTUML_DIS + '/AIMachineLearning/AzureCognitiveServices.png'
+!$AzureMachineLearningService_png = $NB_AZURE_PLANTUML_DIS + '/AIMachineLearning/AzureMachineLearningService.png'
+!$AzureMachineLearningStudio_png = $NB_AZURE_PLANTUML_DIS + '/AIMachineLearning/AzureMachineLearningStudio.png'
+!$AzureMachineLearningStudioClassic_png = $NB_AZURE_PLANTUML_DIS + '/AIMachineLearning/AzureMachineLearningStudioClassic.png'
+!$AzureMachineLearningStudioWebServicePlan_png = $NB_AZURE_PLANTUML_DIS + '/AIMachineLearning/AzureMachineLearningStudioWebServicePlan.png'
+!$AzureMachineLearningStudioWorkspace_png = $NB_AZURE_PLANTUML_DIS + '/AIMachineLearning/AzureMachineLearningStudioWorkspace.png'
+!$AzureTranslatorText_png = $NB_AZURE_PLANTUML_DIS + '/AIMachineLearning/AzureTranslatorText.png'
 
- '--- Databases ----
+' --- Databases ----
 
-!define AzureCosmosDb  NB_AZURE_PLANTUML_DIS /Databases/AzureCosmosDb.png
-!define AzureDatabaseForMariaDB  NB_AZURE_PLANTUML_DIS /Databases/AzureDatabaseForMariaDB.png
-!define AzureDatabaseForMySQL  NB_AZURE_PLANTUML_DIS /Databases/AzureDatabaseForMySQL.png
-!define AzureDatabaseForPostgreSQL  NB_AZURE_PLANTUML_DIS /Databases/AzureDatabaseForPostgreSQL.png
-!define AzureDatabaseMigrationService  NB_AZURE_PLANTUML_DIS /Databases/AzureDatabaseMigrationService.png
-!define AzureDataBricks  NB_AZURE_PLANTUML_DIS /Databases/AzureDataBricks.png
-!define AzureDataExplorerCluster  NB_AZURE_PLANTUML_DIS /Databases/AzureDataExplorerCluster.png
-!define AzureDataFactory  NB_AZURE_PLANTUML_DIS /Databases/AzureDataFactory.png
-!define AzureInstancePool  NB_AZURE_PLANTUML_DIS /Databases/AzureInstancePool.png
-!define AzureManagedDatabase  NB_AZURE_PLANTUML_DIS /Databases/AzureManagedDatabase.png
-!define AzureRedisCache  NB_AZURE_PLANTUML_DIS /Databases/AzureRedisCache.png
-!define AzureSql  NB_AZURE_PLANTUML_DIS /Databases/AzureSql.png
-!define AzureSqlDatabase  NB_AZURE_PLANTUML_DIS /Databases/AzureSqlDatabase.png
-!define AzureSqlDataWarehouse  NB_AZURE_PLANTUML_DIS /Databases/AzureSqlDataWarehouse.png
-!define AzureSqlElasticPool  NB_AZURE_PLANTUML_DIS /Databases/AzureSqlElasticPool.png
-!define AzureSqlManagedInstance  NB_AZURE_PLANTUML_DIS /Databases/AzureSqlManagedInstance.png
-!define AzureSqlServer  NB_AZURE_PLANTUML_DIS /Databases/AzureSqlServer.png
-!define AzureSqlStretchDatabase  NB_AZURE_PLANTUML_DIS /Databases/AzureSqlStretchDatabase.png
-!define AzureSqlVirtualMachine  NB_AZURE_PLANTUML_DIS /Databases/AzureSqlVirtualMachine.png
-!define AzureSSISLiftAndShift  NB_AZURE_PLANTUML_DIS /Databases/AzureSSISLiftAndShift.png
-!define AzureVirtualCluster  NB_AZURE_PLANTUML_DIS /Databases/AzureVirtualCluster.png
+!$AzureCosmosDb_png = $NB_AZURE_PLANTUML_DIS + '/Databases/AzureCosmosDb.png'
+!$AzureDatabaseForMariaDB_png = $NB_AZURE_PLANTUML_DIS + '/Databases/AzureDatabaseForMariaDB.png'
+!$AzureDatabaseForMySQL_png = $NB_AZURE_PLANTUML_DIS + '/Databases/AzureDatabaseForMySQL.png'
+!$AzureDatabaseForPostgreSQL_png = $NB_AZURE_PLANTUML_DIS + '/Databases/AzureDatabaseForPostgreSQL.png'
+!$AzureDatabaseMigrationService_png = $NB_AZURE_PLANTUML_DIS + '/Databases/AzureDatabaseMigrationService.png'
+!$AzureDataBricks_png = $NB_AZURE_PLANTUML_DIS + '/Databases/AzureDataBricks.png'
+!$AzureDataExplorerCluster_png = $NB_AZURE_PLANTUML_DIS + '/Databases/AzureDataExplorerCluster.png'
+!$AzureDataFactory_png = $NB_AZURE_PLANTUML_DIS + '/Databases/AzureDataFactory.png'
+!$AzureInstancePool_png = $NB_AZURE_PLANTUML_DIS + '/Databases/AzureInstancePool.png'
+!$AzureManagedDatabase_png = $NB_AZURE_PLANTUML_DIS + '/Databases/AzureManagedDatabase.png'
+!$AzureRedisCache_png = $NB_AZURE_PLANTUML_DIS + '/Databases/AzureRedisCache.png'
+!$AzureSql_png = $NB_AZURE_PLANTUML_DIS + '/Databases/AzureSql.png'
+!$AzureSqlDatabase_png = $NB_AZURE_PLANTUML_DIS + '/Databases/AzureSqlDatabase.png'
+!$AzureSqlDataWarehouse_png = $NB_AZURE_PLANTUML_DIS + '/Databases/AzureSqlDataWarehouse.png'
+!$AzureSqlElasticPool_png = $NB_AZURE_PLANTUML_DIS + '/Databases/AzureSqlElasticPool.png'
+!$AzureSqlManagedInstance_png = $NB_AZURE_PLANTUML_DIS + '/Databases/AzureSqlManagedInstance.png'
+!$AzureSqlServer_png = $NB_AZURE_PLANTUML_DIS + '/Databases/AzureSqlServer.png'
+!$AzureSqlStretchDatabase_png = $NB_AZURE_PLANTUML_DIS + '/Databases/AzureSqlStretchDatabase.png'
+!$AzureSqlVirtualMachine_png = $NB_AZURE_PLANTUML_DIS + '/Databases/AzureSqlVirtualMachine.png'
+!$AzureSSISLiftAndShift_png = $NB_AZURE_PLANTUML_DIS + '/Databases/AzureSSISLiftAndShift.png'
+!$AzureVirtualCluster_png = $NB_AZURE_PLANTUML_DIS + '/Databases/AzureVirtualCluster.png'
 
- '--- Copute ----
+' --- Copute ----
 
-!define AzureAppService  NB_AZURE_PLANTUML_DIS /Compute/AzureAppService.png
-!define AzureAppServicePlan  NB_AZURE_PLANTUML_DIS /Compute/AzureAppServicePlan.png
-!define AzureAppServicePlanLinux  NB_AZURE_PLANTUML_DIS /Compute/AzureAppServicePlanLinux.png
-!define AzureAutomanagedVirtualMachine  NB_AZURE_PLANTUML_DIS /Compute/AzureAutomanagedVirtualMachine.png
-!define AzureAvailabiltySet  NB_AZURE_PLANTUML_DIS /Compute/AzureAvailabiltySet.png
-!define AzureBatch  NB_AZURE_PLANTUML_DIS /Compute/AzureBatch.png
-!define AzureBatchAccount  NB_AZURE_PLANTUML_DIS /Compute/AzureBatchAccount.png
-!define AzureCloudServices  NB_AZURE_PLANTUML_DIS /Compute/AzureCloudServices.png
-!define AzureContainerService  NB_AZURE_PLANTUML_DIS /Compute/AzureContainerService.png
-!define AzureDisk  NB_AZURE_PLANTUML_DIS /Compute/AzureDisk.png
-!define AzureDiskEncryptionSet  NB_AZURE_PLANTUML_DIS /Compute/AzureDiskEncryptionSet.png
-!define AzureDiskSnapshot  NB_AZURE_PLANTUML_DIS /Compute/AzureDiskSnapshot.png
-!define AzureFunction  NB_AZURE_PLANTUML_DIS /Compute/AzureFunction.png
-!define AzureImageClassic  NB_AZURE_PLANTUML_DIS /Compute/AzureImageClassic.png
-!define AzureImageDefinition  NB_AZURE_PLANTUML_DIS /Compute/AzureImageDefinition.png
-!define AzureImageVersion  NB_AZURE_PLANTUML_DIS /Compute/AzureImageVersion.png
-!define AzureMeshApplication  NB_AZURE_PLANTUML_DIS /Compute/AzureMeshApplication.png
-!define AzureServerFarm  NB_AZURE_PLANTUML_DIS /Compute/AzureServerFarm.png
-!define AzureServiceFabric  NB_AZURE_PLANTUML_DIS /Compute/AzureServiceFabric.png
-!define AzureSharedImageGallery  NB_AZURE_PLANTUML_DIS /Compute/AzureSharedImageGallery.png
-!define AzureSpringCloud  NB_AZURE_PLANTUML_DIS /Compute/AzureSpringCloud.png
-!define AzureVirtualDesktop  NB_AZURE_PLANTUML_DIS /Compute/AzureVirtualDesktop.png
-!define AzureVirtualDesktopApplicationGroup  NB_AZURE_PLANTUML_DIS /Compute/AzureVirtualDesktopApplicationGroup.png
-!define AzureVirtualDesktopHostPool  NB_AZURE_PLANTUML_DIS /Compute/AzureVirtualDesktopHostPool.png
-!define AzureVirtualDesktopWorkspace  NB_AZURE_PLANTUML_DIS /Compute/AzureVirtualDesktopWorkspace.png
-!define AzureVirtualMachine  NB_AZURE_PLANTUML_DIS /Compute/AzureVirtualMachine.png
-!define AzureVirtualMachineClassic  NB_AZURE_PLANTUML_DIS /Compute/AzureVirtualMachineClassic.png
-!define AzureVirtualMachineScaleSet  NB_AZURE_PLANTUML_DIS /Compute/AzureVirtualMachineScaleSet.png
-!define AzureWebSlot  NB_AZURE_PLANTUML_DIS /Compute/AzureWebSlot.png
-!define AzureWebTest  NB_AZURE_PLANTUML_DIS /Compute/AzureWebTest.png
+!$AzureAppService_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureAppService.png'
+!$AzureAppServicePlan_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureAppServicePlan.png'
+!$AzureAppServicePlanLinux_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureAppServicePlanLinux.png'
+!$AzureAutomanagedVirtualMachine_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureAutomanagedVirtualMachine.png'
+!$AzureAvailabiltySet_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureAvailabiltySet.png'
+!$AzureBatch_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureBatch.png'
+!$AzureBatchAccount_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureBatchAccount.png'
+!$AzureCloudServices_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureCloudServices.png'
+!$AzureContainerService_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureContainerService.png'
+!$AzureDisk_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureDisk.png'
+!$AzureDiskEncryptionSet_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureDiskEncryptionSet.png'
+!$AzureDiskSnapshot_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureDiskSnapshot.png'
+!$AzureFunction_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureFunction.png'
+!$AzureImageClassic_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureImageClassic.png'
+!$AzureImageDefinition_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureImageDefinition.png'
+!$AzureImageVersion_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureImageVersion.png'
+!$AzureMeshApplication_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureMeshApplication.png'
+!$AzureServerFarm_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureServerFarm.png'
+!$AzureServiceFabric_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureServiceFabric.png'
+!$AzureSharedImageGallery_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureSharedImageGallery.png'
+!$AzureSpringCloud_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureSpringCloud.png'
+!$AzureVirtualDesktop_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureVirtualDesktop.png'
+!$AzureVirtualDesktopApplicationGroup_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureVirtualDesktopApplicationGroup.png'
+!$AzureVirtualDesktopHostPool_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureVirtualDesktopHostPool.png'
+!$AzureVirtualDesktopWorkspace_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureVirtualDesktopWorkspace.png'
+!$AzureVirtualMachine_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureVirtualMachine.png'
+!$AzureVirtualMachineClassic_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureVirtualMachineClassic.png'
+!$AzureVirtualMachineScaleSet_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureVirtualMachineScaleSet.png'
+!$AzureWebSlot_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureWebSlot.png'
+!$AzureWebTest_png = $NB_AZURE_PLANTUML_DIS + '/Compute/AzureWebTest.png'
 
 '--- Container ----
 
-!define AzureContainerApp  NB_AZURE_PLANTUML_DIS /Containers/AzureContainerApp.png
-!define AzureContainerInstance  NB_AZURE_PLANTUML_DIS /Containers/AzureContainerInstance.png
-!define AzureContainerRegistry  NB_AZURE_PLANTUML_DIS /Containers/AzureContainerRegistry.png
-!define AzureKubernetesService  NB_AZURE_PLANTUML_DIS /Containers/AzureKubernetesService.png
-!define AzureServiceEnvironment  NB_AZURE_PLANTUML_DIS /Containers/AzureServiceEnvironment.png
+!$AzureContainerApp_png = $NB_AZURE_PLANTUML_DIS + '/Containers/AzureContainerApp.png'
+!$AzureContainerInstance_png = $NB_AZURE_PLANTUML_DIS + '/Containers/AzureContainerInstance.png'
+!$AzureContainerRegistry_png = $NB_AZURE_PLANTUML_DIS + '/Containers/AzureContainerRegistry.png'
+!$AzureKubernetesService_png = $NB_AZURE_PLANTUML_DIS + '/Containers/AzureKubernetesService.png'
+!$AzureServiceEnvironment_png = $NB_AZURE_PLANTUML_DIS + '/Containers/AzureServiceEnvironment.png'
 
 '--- Ceneral ----
 
-!define Azure  NB_AZURE_PLANTUML_DIS /General/Azure.png
-!define AzureWorkbook  NB_AZURE_PLANTUML_DIS /General/AzureWorkbook.png
-!define AzureWorkflow  NB_AZURE_PLANTUML_DIS /General/AzureWorkflow.png
+!$Azure_png = $NB_AZURE_PLANTUML_DIS + '/General/Azure.png'
+!$AzureWorkbook_png = $NB_AZURE_PLANTUML_DIS + '/General/AzureWorkbook.png'
+!$AzureWorkflow_png = $NB_AZURE_PLANTUML_DIS + '/General/AzureWorkflow.png'
 
 '--- Identity ----
-!define AzureActiveDirectory  NB_AZURE_PLANTUML_DIS /Identity/AzureActiveDirectory.png
-!define AzureActiveDirectoryB2C  NB_AZURE_PLANTUML_DIS /Identity/AzureActiveDirectoryB2C.png
-!define AzureActiveDirectoryConnectHealth  NB_AZURE_PLANTUML_DIS /Identity/AzureActiveDirectoryConnectHealth.png
-!define AzureActiveDirectoryDomainServices  NB_AZURE_PLANTUML_DIS /Identity/AzureActiveDirectoryDomainServices.png
-!define AzureActiveDirectoryGroup  NB_AZURE_PLANTUML_DIS /Identity/AzureActiveDirectoryGroup.png
-!define AzureActiveDirectoryIdentityProtection  NB_AZURE_PLANTUML_DIS /Identity/AzureActiveDirectoryIdentityProtection.png
-!define AzureActiveDirectoryRolesAndAdministrators  NB_AZURE_PLANTUML_DIS /Identity/AzureActiveDirectoryRolesAndAdministrators.png
-!define AzureActiveDirectoryUser  NB_AZURE_PLANTUML_DIS /Identity/AzureActiveDirectoryUser.png
-!define AzureAppRegistration  NB_AZURE_PLANTUML_DIS /Identity/AzureAppRegistration.png
-!define AzureEnterpriseApplication  NB_AZURE_PLANTUML_DIS /Identity/AzureEnterpriseApplication.png
-!define AzureIdentityGovernance  NB_AZURE_PLANTUML_DIS /Identity/AzureIdentityGovernance.png
-!define AzureManagedIdentity  NB_AZURE_PLANTUML_DIS /Identity/AzureManagedIdentity.png
+!$AzureActiveDirectory_png = $NB_AZURE_PLANTUML_DIS + '/Identity/AzureActiveDirectory.png'
+!$AzureActiveDirectoryB2C_png = $NB_AZURE_PLANTUML_DIS + '/Identity/AzureActiveDirectoryB2C.png'
+!$AzureActiveDirectoryConnectHealth_png = $NB_AZURE_PLANTUML_DIS + '/Identity/AzureActiveDirectoryConnectHealth.png'
+!$AzureActiveDirectoryDomainServices_png = $NB_AZURE_PLANTUML_DIS + '/Identity/AzureActiveDirectoryDomainServices.png'
+!$AzureActiveDirectoryGroup_png = $NB_AZURE_PLANTUML_DIS + '/Identity/AzureActiveDirectoryGroup.png'
+!$AzureActiveDirectoryIdentityProtection_png = $NB_AZURE_PLANTUML_DIS + '/Identity/AzureActiveDirectoryIdentityProtection.png'
+!$AzureActiveDirectoryRolesAndAdministrators_png = $NB_AZURE_PLANTUML_DIS + '/Identity/AzureActiveDirectoryRolesAndAdministrators.png'
+!$AzureActiveDirectoryUser_png = $NB_AZURE_PLANTUML_DIS + '/Identity/AzureActiveDirectoryUser.png'
+!$AzureAppRegistration_png = $NB_AZURE_PLANTUML_DIS + '/Identity/AzureAppRegistration.png'
+!$AzureEnterpriseApplication_png = $NB_AZURE_PLANTUML_DIS + '/Identity/AzureEnterpriseApplication.png'
+!$AzureIdentityGovernance_png = $NB_AZURE_PLANTUML_DIS + '/Identity/AzureIdentityGovernance.png'
+!$AzureManagedIdentity_png = $NB_AZURE_PLANTUML_DIS + '/Identity/AzureManagedIdentity.png'
 
- '--- Networking ----
-!define AzureApplicationGatewa  NB_AZURE_PLANTUML_DIS /Networking/AzureApplicationGatewa.png
-!define AzureAzureDDoSProtectio  NB_AZURE_PLANTUML_DIS /Networking/AzureAzureDDoSProtectio.png
-!define AzureBastio  NB_AZURE_PLANTUML_DIS /Networking/AzureBastio.png
-!define AzureCDNProfil  NB_AZURE_PLANTUML_DIS /Networking/AzureCDNProfil.png
-!define AzureDN  NB_AZURE_PLANTUML_DIS /Networking/AzureDN.png
-!define AzureDNSServe  NB_AZURE_PLANTUML_DIS /Networking/AzureDNSServe.png
-!define AzureExpressRout  NB_AZURE_PLANTUML_DIS /Networking/AzureExpressRout.png
-!define AzureExpressRouteCircui  NB_AZURE_PLANTUML_DIS /Networking/AzureExpressRouteCircui.png
-!define AzureExpressRouteDirec  NB_AZURE_PLANTUML_DIS /Networking/AzureExpressRouteDirec.png
-!define AzureFirewal  NB_AZURE_PLANTUML_DIS /Networking/AzureFirewal.png
-!define AzureFirewallManage  NB_AZURE_PLANTUML_DIS /Networking/AzureFirewallManage.png
-!define AzureFrontDoo  NB_AZURE_PLANTUML_DIS /Networking/AzureFrontDoo.png
-!define AzureFrontDoorServic  NB_AZURE_PLANTUML_DIS /Networking/AzureFrontDoorServic.png
-!define AzureIPAddressSpac  NB_AZURE_PLANTUML_DIS /Networking/AzureIPAddressSpac.png
-!define AzureIPGroup  NB_AZURE_PLANTUML_DIS /Networking/AzureIPGroup.png
-!define AzureLoadBalance  NB_AZURE_PLANTUML_DIS /Networking/AzureLoadBalance.png
-!define AzureNA  NB_AZURE_PLANTUML_DIS /Networking/AzureNA.png
-!define AzureNetworkInterfac  NB_AZURE_PLANTUML_DIS /Networking/AzureNetworkInterfac.png
-!define AzureNS  NB_AZURE_PLANTUML_DIS /Networking/AzureNS.png
-!define AzurePrivateLin  NB_AZURE_PLANTUML_DIS /Networking/AzurePrivateLin.png
-!define AzurePrivateLinkHu  NB_AZURE_PLANTUML_DIS /Networking/AzurePrivateLinkHu.png
-!define AzurePrivateLinkServic  NB_AZURE_PLANTUML_DIS /Networking/AzurePrivateLinkServic.png
-!define AzurePublicIPAddres  NB_AZURE_PLANTUML_DIS /Networking/AzurePublicIPAddres.png
-!define AzurePublicIPAddressClassi  NB_AZURE_PLANTUML_DIS /Networking/AzurePublicIPAddressClassi.png
-!define AzurePublicIPPrefi  NB_AZURE_PLANTUML_DIS /Networking/AzurePublicIPPrefi.png
-!define AzureRouteFilte  NB_AZURE_PLANTUML_DIS /Networking/AzureRouteFilte.png
-!define AzureRouteTabl  NB_AZURE_PLANTUML_DIS /Networking/AzureRouteTabl.png
-!define AzureServiceEndpoin  NB_AZURE_PLANTUML_DIS /Networking/AzureServiceEndpoin.png
-!define AzureServiceEndpointPolic  NB_AZURE_PLANTUML_DIS /Networking/AzureServiceEndpointPolic.png
-!define AzureSubne  NB_AZURE_PLANTUML_DIS /Networking/AzureSubne.png
-!define AzureTrafficManage  NB_AZURE_PLANTUML_DIS /Networking/AzureTrafficManage.png
-!define AzureVirtualNetwor  NB_AZURE_PLANTUML_DIS /Networking/AzureVirtualNetwor.png
-!define AzureVirtualNetworkPeerin  NB_AZURE_PLANTUML_DIS /Networking/AzureVirtualNetworkPeerin.png
-!define AzureVirtualWA  NB_AZURE_PLANTUML_DIS /Networking/AzureVirtualWA.png
-!define AzureVPNGatewa  NB_AZURE_PLANTUML_DIS /Networking/AzureVPNGatewa.png
+' --- Networking ----
+!$AzureApplicationGatewa_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureApplicationGatewa.png'
+!$AzureAzureDDoSProtectio_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureAzureDDoSProtectio.png'
+!$AzureBastio_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureBastio.png'
+!$AzureCDNProfil_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureCDNProfil.png'
+!$AzureDN_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureDN.png'
+!$AzureDNSServe_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureDNSServe.png'
+!$AzureExpressRout_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureExpressRout.png'
+!$AzureExpressRouteCircui_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureExpressRouteCircui.png'
+!$AzureExpressRouteDirec_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureExpressRouteDirec.png'
+!$AzureFirewal_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureFirewal.png'
+!$AzureFirewallManage_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureFirewallManage.png'
+!$AzureFrontDoo_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureFrontDoo.png'
+!$AzureFrontDoorServic_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureFrontDoorServic.png'
+!$AzureIPAddressSpac_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureIPAddressSpac.png'
+!$AzureIPGroup_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureIPGroup.png'
+!$AzureLoadBalance_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureLoadBalance.png'
+!$AzureNA_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureNA.png'
+!$AzureNetworkInterfac_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureNetworkInterfac.png'
+!$AzureNS_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureNS.png'
+!$AzurePrivateLin_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzurePrivateLin.png'
+!$AzurePrivateLinkHu_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzurePrivateLinkHu.png'
+!$AzurePrivateLinkServic_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzurePrivateLinkServic.png'
+!$AzurePublicIPAddres_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzurePublicIPAddres.png'
+!$AzurePublicIPAddressClassi_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzurePublicIPAddressClassi.png'
+!$AzurePublicIPPrefi_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzurePublicIPPrefi.png'
+!$AzureRouteFilte_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureRouteFilte.png'
+!$AzureRouteTabl_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureRouteTabl.png'
+!$AzureServiceEndpoin_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureServiceEndpoin.png'
+!$AzureServiceEndpointPolic_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureServiceEndpointPolic.png'
+!$AzureSubne_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureSubne.png'
+!$AzureTrafficManage_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureTrafficManage.png'
+!$AzureVirtualNetwor_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureVirtualNetwor.png'
+!$AzureVirtualNetworkPeerin_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureVirtualNetworkPeerin.png'
+!$AzureVirtualWA_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureVirtualWA.png'
+!$AzureVPNGatewa_png = $NB_AZURE_PLANTUML_DIS + '/Networking/AzureVPNGatewa.png'
