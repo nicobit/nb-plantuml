@@ -138,7 +138,7 @@
   { "AzureBatchAI" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/AIMachineLearning/AzureBatchAI.png",
  "AzureBotService" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/AIMachineLearning/AzureBotService.png",
  "AzureCognitiveServices" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/AIMachineLearning/AzureCognitiveServices.png",
- "AzureMachineLearningService" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/AIMachineLearning/AzureMachineLearningService.png"}
+ "AzureMachineLearningService" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/AIMachineLearning/AzureMachineLearningService.png",
  "AzureMachineLearningStudio" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/AIMachineLearning/AzureMachineLearningStudio.png",
  "AzureMachineLearningStudioClassic" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/AIMachineLearning/AzureMachineLearningStudioClassic.png",
  "AzureMachineLearningStudioWebServicePlan" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/AIMachineLearning/AzureMachineLearningStudioWebServicePlan.png",
