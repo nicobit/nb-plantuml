@@ -24,7 +24,7 @@ AzureEntity_ext(e_alias, e_label, e_techn, e_color, e_sprite, $e_stereo,$e_image
 !enddefinelong
 
 !define AzureEntity(e_alias, e_label, e_techn, e_descr, e_color, e_sprite, e_stereo) 
-!local $tempA = "" + $e_stereo
+!local $tempB = "" + $e_stereo
 !local $e_image = $NBAzurePNG.Icons[0][$tempA]
 AzureEntity_ext(e_alias, e_label, e_techn, e_color, e_sprite, $e_stereo,$e_image)
 !enddefinelong
