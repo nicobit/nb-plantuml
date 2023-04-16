@@ -18,7 +18,7 @@ skinparam rectangle<<e_stereo>> {
 
 
 !definelong AzureEntity(e_alias, e_label, e_techn, e_color, e_sprite, e_stereo)
-!$tempA = e_stereo
+!$tempA = "AzureTrafficManager"
 !local $e_image = $NBAzurePNG.Icons[0][$tempA]
 AzureEntity_ext(e_alias, e_label, e_techn, e_color, e_sprite, e_stereo,$e_image)
 !enddefinelong
