@@ -17,7 +17,11 @@ skinparam rectangle<<e_stereo>> {
 ' ##################################
 
 
-!define AzureEntity(e_alias, e_label, e_techn, e_color, e_sprite, e_stereo) AzureEntity_ext(e_alias, e_label, e_techn, e_color, e_sprite, e_stereo,e_stereo_png)
+!definelong AzureEntity(e_alias, e_label, e_techn, e_color, e_sprite, e_stereo)
+!$e_img = e_stereo + "_png"
+AzureEntity_ext(e_alias, e_label, e_techn, e_color, e_sprite, e_stereo,$e_img)
+!enddefinelong
+
 !define AzureEntity(e_alias, e_label, e_techn, e_descr, e_color, e_sprite, e_stereo) AzureEntity_ext(e_alias, e_label, e_techn, e_color, e_sprite, e_stereo,e_stereo_png)
 
 
