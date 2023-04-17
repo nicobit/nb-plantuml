@@ -283,7 +283,21 @@
 "AzureStorage" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureStorage.png",
 "AzureStorageClassic" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureStorageClassic.png",
 "AzureStorageContainer" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureStorageContainer.png",
-"AzureStorSimple" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureStorSimple.png"
+"AzureStorSimple" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureStorSimple.png",
+"AzureAnalysisServices" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Analytics/AzureAnalysisServices.png",
+"AzureDatabricks" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Analytics/AzureDatabricks.png",
+"AzureDataCatalog" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Analytics/AzureDataCatalog.png",
+"AzureDataExplorer" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Analytics/AzureDataExplorer.png",
+"AzureDataLakeStoreGen1" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Analytics/AzureDataLakeStoreGen1.png",
+"AzureEventHub" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Analytics/AzureEventHub.png",
+"AzureEventHubCluster" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Analytics/AzureEventHubCluster.png",
+"AzureHDInsightCluster" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Analytics/AzureHDInsightCluster.png",
+"AzureLogAnalyticsWorkspace" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Analytics/AzureLogAnalyticsWorkspace.png",
+"AzurePowerBIEmbedded" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Analytics/AzurePowerBIEmbedded.png",
+"AzurePurviewAccount" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Analytics/AzurePurviewAccount.png",
+"AzureStreamAnalyticsJob" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Analytics/AzureStreamAnalyticsJob.png",
+"AzureSynapseAnalytics" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Analytics/AzureSynapseAnalytics.png",
+"PowerBI" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Analytics/PowerBI.png"
  }
   ]
   }
