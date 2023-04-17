@@ -262,6 +262,7 @@
 "AzureProperties" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Web/AzureProperties.png",
 "AzureQuota" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Web/AzureQuota.png",
 "AzureSearch" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Web/AzureSearch.png",
+"AzureSignalRService" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Web/AzureSignalRService.png",
 "AzureWebApp" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Web/AzureWebApp.png",
 "AzureBizTalk" :"https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Integration/AzureBizTalk.png",
  "AzureEventGrid" :"https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Integration/AzureEventGrid.png",
