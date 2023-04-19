@@ -33,6 +33,6 @@ rectangle "GetAzureEntity_ext(e_alias, e_label, e_techn, e_color, e_sprite, $e_s
 
 !function GetAzureEntity_ext(e_alias, e_label, e_techn, e_color, e_sprite, e_stereo)
 !local $tempA = "" + $e_stereo
-!local e_img = $NBAzurePNG.Icons[0][$tempA]
-!return "<color:e_color><img:e_img{scale=AZURE_PNG_ICON_SCALE}></color>\ne_label\n[e_techn]"
+!local $e_img = $NBAzurePNG.Icons[0][$tempA]
+!return "<color:e_color><img:$e_img{scale=AZURE_PNG_ICON_SCALE}></color>\ne_label\n[e_techn]"
 !enddefinelong
