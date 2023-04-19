@@ -27,7 +27,7 @@ skinparam rectangle<<e_stereo>> {
 
 
 !definelong AzureEntity(e_alias, e_label, e_techn, e_color, e_sprite, $e_stereo)
-rectangle GetAzureEntity_ext(e_alias, e_label, e_techn, e_color, e_sprite, $e_stereo) <<$e_stereo>> as e_alias
+rectangle "GetAzureEntity_ext(e_alias, e_label, e_techn, e_color, e_sprite, $e_stereo)" <<$e_stereo>> as e_alias
 !enddefinelong
 
 !define AzureEntity(e_alias, e_label, e_techn, e_descr, e_color, e_sprite, e_stereo) AzureEntity(e_alias, e_label, e_techn, e_color, e_sprite, $e_stereo)
