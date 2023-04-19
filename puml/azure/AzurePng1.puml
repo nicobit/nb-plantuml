@@ -1,0 +1,305 @@
+!$NB_AZURE_PLANTUML_DIS ?= "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist"
+' --- AIMachineLearning ----
+
+!$AzureBatchAI_png ?= $NB_AZURE_PLANTUML_DIS + "/AIMachineLearning/AzureBatchAI.png"
+!$AzureBotService_png ?= $NB_AZURE_PLANTUML_DIS + "/AIMachineLearning/AzureBotService.png"
+!$AzureCognitiveServices_png ?= $NB_AZURE_PLANTUML_DIS + "/AIMachineLearning/AzureCognitiveServices.png"
+!$AzureMachineLearningService_png ?= $NB_AZURE_PLANTUML_DIS + "/AIMachineLearning/AzureMachineLearningService.png"
+!$AzureMachineLearningStudio_png ?= $NB_AZURE_PLANTUML_DIS + "/AIMachineLearning/AzureMachineLearningStudio.png"
+!$AzureMachineLearningStudioClassic_png ?= $NB_AZURE_PLANTUML_DIS + "/AIMachineLearning/AzureMachineLearningStudioClassic.png"
+!$AzureMachineLearningStudioWebServicePlan_png ?= $NB_AZURE_PLANTUML_DIS + "/AIMachineLearning/AzureMachineLearningStudioWebServicePlan.png"
+!$AzureMachineLearningStudioWorkspace_png ?= $NB_AZURE_PLANTUML_DIS + "/AIMachineLearning/AzureMachineLearningStudioWorkspace.png"
+!$AzureTranslatorText_png ?= $NB_AZURE_PLANTUML_DIS + "/AIMachineLearning/AzureTranslatorText.png"
+
+' --- Databases ----
+
+!$AzureCosmosDb_png ?= $NB_AZURE_PLANTUML_DIS + "/Databases/AzureCosmosDb.png"
+!$AzureDatabaseForMariaDB_png ?= $NB_AZURE_PLANTUML_DIS + "/Databases/AzureDatabaseForMariaDB.png"
+!$AzureDatabaseForMySQL_png ?= $NB_AZURE_PLANTUML_DIS + "/Databases/AzureDatabaseForMySQL.png"
+!$AzureDatabaseForPostgreSQL_png ?= $NB_AZURE_PLANTUML_DIS + "/Databases/AzureDatabaseForPostgreSQL.png"
+!$AzureDatabaseMigrationService_png ?= $NB_AZURE_PLANTUML_DIS + "/Databases/AzureDatabaseMigrationService.png"
+!$AzureDataBricks_png ?= $NB_AZURE_PLANTUML_DIS + "/Databases/AzureDataBricks.png"
+!$AzureDataExplorerCluster_png ?= $NB_AZURE_PLANTUML_DIS + "/Databases/AzureDataExplorerCluster.png"
+!$AzureDataFactory_png ?= $NB_AZURE_PLANTUML_DIS + "/Databases/AzureDataFactory.png"
+!$AzureInstancePool_png ?= $NB_AZURE_PLANTUML_DIS + "/Databases/AzureInstancePool.png"
+!$AzureManagedDatabase_png ?= $NB_AZURE_PLANTUML_DIS + "/Databases/AzureManagedDatabase.png"
+!$AzureRedisCache_png ?= $NB_AZURE_PLANTUML_DIS + "/Databases/AzureRedisCache.png"
+!$AzureSql_png ?= $NB_AZURE_PLANTUML_DIS + "/Databases/AzureSql.png"
+!$AzureSqlDatabase_png ?= $NB_AZURE_PLANTUML_DIS + "/Databases/AzureSqlDatabase.png"
+!$AzureSqlDataWarehouse_png ?= $NB_AZURE_PLANTUML_DIS + "/Databases/AzureSqlDataWarehouse.png"
+!$AzureSqlElasticPool_png ?= $NB_AZURE_PLANTUML_DIS + "/Databases/AzureSqlElasticPool.png"
+!$AzureSqlManagedInstance_png ?= $NB_AZURE_PLANTUML_DIS + "/Databases/AzureSqlManagedInstance.png"
+!$AzureSqlServer_png ?= $NB_AZURE_PLANTUML_DIS + "/Databases/AzureSqlServer.png"
+!$AzureSqlStretchDatabase_png ?= $NB_AZURE_PLANTUML_DIS + "/Databases/AzureSqlStretchDatabase.png"
+!$AzureSqlVirtualMachine_png ?= $NB_AZURE_PLANTUML_DIS + "/Databases/AzureSqlVirtualMachine.png"
+!$AzureSSISLiftAndShift_png ?= $NB_AZURE_PLANTUML_DIS + "/Databases/AzureSSISLiftAndShift.png"
+!$AzureVirtualCluster_png ?= $NB_AZURE_PLANTUML_DIS + "/Databases/AzureVirtualCluster.png"
+
+' --- Copute ----
+
+!$AzureAppService_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureAppService.png"
+!$AzureAppServicePlan_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureAppServicePlan.png"
+!$AzureAppServicePlanLinux_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureAppServicePlanLinux.png"
+!$AzureAutomanagedVirtualMachine_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureAutomanagedVirtualMachine.png"
+!$AzureAvailabiltySet_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureAvailabiltySet.png"
+!$AzureBatch_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureBatch.png"
+!$AzureBatchAccount_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureBatchAccount.png"
+!$AzureCloudServices_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureCloudServices.png"
+!$AzureContainerService_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureContainerService.png"
+!$AzureDisk_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureDisk.png"
+!$AzureDiskEncryptionSet_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureDiskEncryptionSet.png"
+!$AzureDiskSnapshot_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureDiskSnapshot.png"
+!$AzureFunction_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureFunction.png"
+!$AzureImageClassic_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureImageClassic.png"
+!$AzureImageDefinition_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureImageDefinition.png"
+!$AzureImageVersion_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureImageVersion.png"
+!$AzureMeshApplication_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureMeshApplication.png"
+!$AzureServerFarm_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureServerFarm.png"
+!$AzureServiceFabric_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureServiceFabric.png"
+!$AzureSharedImageGallery_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureSharedImageGallery.png"
+!$AzureSpringCloud_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureSpringCloud.png"
+!$AzureVirtualDesktop_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureVirtualDesktop.png"
+!$AzureVirtualDesktopApplicationGroup_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureVirtualDesktopApplicationGroup.png"
+!$AzureVirtualDesktopHostPool_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureVirtualDesktopHostPool.png"
+!$AzureVirtualDesktopWorkspace_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureVirtualDesktopWorkspace.png"
+!$AzureVirtualMachine_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureVirtualMachine.png"
+!$AzureVirtualMachineClassic_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureVirtualMachineClassic.png"
+!$AzureVirtualMachineScaleSet_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureVirtualMachineScaleSet.png"
+!$AzureWebSlot_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureWebSlot.png"
+!$AzureWebTest_png ?= $NB_AZURE_PLANTUML_DIS + "/Compute/AzureWebTest.png"
+
+' --- Container ----
+
+!$AzureContainerApp_png ?= $NB_AZURE_PLANTUML_DIS + "/Containers/AzureContainerApp.png"
+!$AzureContainerInstance_png ?= $NB_AZURE_PLANTUML_DIS + "/Containers/AzureContainerInstance.png"
+!$AzureContainerRegistry_png ?= $NB_AZURE_PLANTUML_DIS + "/Containers/AzureContainerRegistry.png"
+!$AzureKubernetesService_png ?= $NB_AZURE_PLANTUML_DIS + "/Containers/AzureKubernetesService.png"
+!$AzureServiceEnvironment_png ?= $NB_AZURE_PLANTUML_DIS + "/Containers/AzureServiceEnvironment.png"
+
+' --- Ceneral ----
+
+!$Azure_png ?= $NB_AZURE_PLANTUML_DIS + "/General/Azure.png"
+!$AzureWorkbook_png ?= $NB_AZURE_PLANTUML_DIS + "/General/AzureWorkbook.png"
+!$AzureWorkflow_png ?= $NB_AZURE_PLANTUML_DIS + "/General/AzureWorkflow.png"
+
+' --- Identity ----
+!$AzureActiveDirectory_png ?= $NB_AZURE_PLANTUML_DIS + "/Identity/AzureActiveDirectory.png"
+!$AzureActiveDirectoryB2C_png ?= $NB_AZURE_PLANTUML_DIS + "/Identity/AzureActiveDirectoryB2C.png"
+!$AzureActiveDirectoryConnectHealth_png ?= $NB_AZURE_PLANTUML_DIS + "/Identity/AzureActiveDirectoryConnectHealth.png"
+!$AzureActiveDirectoryDomainServices_png ?= $NB_AZURE_PLANTUML_DIS + "/Identity/AzureActiveDirectoryDomainServices.png"
+!$AzureActiveDirectoryGroup_png ?= $NB_AZURE_PLANTUML_DIS + "/Identity/AzureActiveDirectoryGroup.png"
+!$AzureActiveDirectoryIdentityProtection_png ?= $NB_AZURE_PLANTUML_DIS + "/Identity/AzureActiveDirectoryIdentityProtection.png"
+!$AzureActiveDirectoryRolesAndAdministrators_png ?= $NB_AZURE_PLANTUML_DIS + "/Identity/AzureActiveDirectoryRolesAndAdministrators.png"
+!$AzureActiveDirectoryUser_png ?= $NB_AZURE_PLANTUML_DIS + "/Identity/AzureActiveDirectoryUser.png"
+!$AzureAppRegistration_png ?= $NB_AZURE_PLANTUML_DIS + "/Identity/AzureAppRegistration.png"
+!$AzureEnterpriseApplication_png ?= $NB_AZURE_PLANTUML_DIS + "/Identity/AzureEnterpriseApplication.png"
+!$AzureIdentityGovernance_png ?= $NB_AZURE_PLANTUML_DIS + "/Identity/AzureIdentityGovernance.png"
+!$AzureManagedIdentity_png ?= $NB_AZURE_PLANTUML_DIS + "/Identity/AzureManagedIdentity.png"
+
+' --- Networking ----
+!$AzureApplicationGateway_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureApplicationGatewa.png"
+!$AzureAzureDDoSProtection_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureAzureDDoSProtectio.png"
+!$AzureBastion_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureBastio.png"
+!$AzureCDNProfile_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureCDNProfil.png"
+!$AzureDNS_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureDN.png"
+!$AzureDNSServer_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureDNSServe.png"
+!$AzureExpressRoute_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureExpressRout.png"
+!$AzureExpressRouteCircuit_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureExpressRouteCircui.png"
+!$AzureExpressRouteDirect_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureExpressRouteDirec.png"
+!$AzureFirewall_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureFirewal.png"
+!$AzureFirewallManager_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureFirewallManage.png"
+!$AzureFrontDoor_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureFrontDoo.png"
+!$AzureFrontDoorService_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureFrontDoorServic.png"
+!$AzureIPAddressSpace_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureIPAddressSpac.png"
+!$AzureIPGroup_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureIPGroup.png"
+!$AzureLoadBalancer_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureLoadBalance.png"
+!$AzureNAT_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureNA.png"
+!$AzureNetworkInterface_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureNetworkInterfac.png"
+!$AzureNSG_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureNS.png"
+!$AzurePrivateLink_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzurePrivateLin.png"
+!$AzurePrivateLinkHub_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzurePrivateLinkHu.png"
+!$AzurePrivateLinkService_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzurePrivateLinkServic.png"
+!$AzurePublicIPAddress_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzurePublicIPAddres.png"
+!$AzurePublicIPAddressClassic_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzurePublicIPAddressClassi.png"
+!$AzurePublicIPPrefix_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzurePublicIPPrefi.png"
+!$AzureRouteFilter_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureRouteFilte.png"
+!$AzureRouteTable_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureRouteTabl.png"
+!$AzureServiceEndpoint_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureServiceEndpoin.png"
+!$AzureServiceEndpointPolicy_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureServiceEndpointPolic.png"
+!$AzureSubnet_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureSubne.png"
+!$AzureTrafficManager_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureTrafficManager.png"
+!$AzureVirtualNetwork_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureVirtualNetwor.png"
+!$AzureVirtualNetworkPeering_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureVirtualNetworkPeerin.png"
+!$AzureVirtualWAN_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureVirtualWA.png"
+!$AzureVPNGateway_png ?= $NB_AZURE_PLANTUML_DIS + "/Networking/AzureVPNGatewa.png"
+
+
+!$NBAzurePNG = { "Icons":[
+  { "AzureBatchAI" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/AIMachineLearning/AzureBatchAI.png",
+ "AzureBotService" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/AIMachineLearning/AzureBotService.png",
+ "AzureCognitiveServices" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/AIMachineLearning/AzureCognitiveServices.png",
+ "AzureMachineLearningService" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/AIMachineLearning/AzureMachineLearningService.png",
+ "AzureMachineLearningStudio" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/AIMachineLearning/AzureMachineLearningStudio.png",
+ "AzureMachineLearningStudioClassic" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/AIMachineLearning/AzureMachineLearningStudioClassic.png",
+ "AzureMachineLearningStudioWebServicePlan" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/AIMachineLearning/AzureMachineLearningStudioWebServicePlan.png",
+ "AzureMachineLearningStudioWorkspace" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/AIMachineLearning/AzureMachineLearningStudioWorkspace.png",
+ "AzureTranslatorText" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/AIMachineLearning/AzureTranslatorText.png",
+ "AzureCosmosDb" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Databases/AzureCosmosDb.png",
+ "AzureDatabaseForMariaDB" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Databases/AzureDatabaseForMariaDB.png",
+ "AzureDatabaseForMySQL" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Databases/AzureDatabaseForMySQL.png",
+ "AzureDatabaseForPostgreSQL" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Databases/AzureDatabaseForPostgreSQL.png",
+ "AzureDatabaseMigrationService" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Databases/AzureDatabaseMigrationService.png",
+ "AzureDataBricks" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Databases/AzureDataBricks.png",
+ "AzureDataExplorerCluster" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Databases/AzureDataExplorerCluster.png",
+ "AzureDataFactory" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Databases/AzureDataFactory.png",
+ "AzureInstancePool" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Databases/AzureInstancePool.png",
+ "AzureManagedDatabase" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Databases/AzureManagedDatabase.png",
+ "AzureRedisCache" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Databases/AzureRedisCache.png",
+ "AzureSql" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Databases/AzureSql.png",
+ "AzureSqlDatabase" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Databases/AzureSqlDatabase.png",
+ "AzureSqlDataWarehouse" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Databases/AzureSqlDataWarehouse.png",
+ "AzureSqlElasticPool" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Databases/AzureSqlElasticPool.png",
+ "AzureSqlManagedInstance" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Databases/AzureSqlManagedInstance.png",
+ "AzureSqlServer" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Databases/AzureSqlServer.png",
+ "AzureSqlStretchDatabase" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Databases/AzureSqlStretchDatabase.png",
+ "AzureSqlVirtualMachine" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Databases/AzureSqlVirtualMachine.png",
+ "AzureSSISLiftAndShift" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Databases/AzureSSISLiftAndShift.png",
+ "AzureVirtualCluster" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Databases/AzureVirtualCluster.png",
+ "AzureAppService" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureAppService.png",
+ "AzureAppServicePlan" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureAppServicePlan.png",
+ "AzureAppServicePlanLinux" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureAppServicePlanLinux.png",
+ "AzureAutomanagedVirtualMachine" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureAutomanagedVirtualMachine.png",
+ "AzureAvailabiltySet" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureAvailabiltySet.png",
+ "AzureBatch" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureBatch.png",
+ "AzureBatchAccount" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureBatchAccount.png",
+ "AzureCloudServices" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureCloudServices.png",
+ "AzureContainerService" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureContainerService.png",
+ "AzureDisk" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureDisk.png",
+ "AzureDiskEncryptionSet" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureDiskEncryptionSet.png",
+ "AzureDiskSnapshot" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureDiskSnapshot.png",
+ "AzureFunction" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureFunction.png",
+ "AzureImageClassic" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureImageClassic.png",
+ "AzureImageDefinition" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureImageDefinition.png",
+ "AzureImageVersion" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureImageVersion.png",
+ "AzureMeshApplication" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureMeshApplication.png",
+ "AzureServerFarm" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureServerFarm.png",
+ "AzureServiceFabric" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureServiceFabric.png",
+ "AzureSharedImageGallery" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureSharedImageGallery.png",
+ "AzureSpringCloud" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureSpringCloud.png",
+ "AzureVirtualDesktop" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureVirtualDesktop.png",
+ "AzureVirtualDesktopApplicationGroup" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureVirtualDesktopApplicationGroup.png",
+ "AzureVirtualDesktopHostPool" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureVirtualDesktopHostPool.png",
+ "AzureVirtualDesktopWorkspace" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureVirtualDesktopWorkspace.png",
+ "AzureVirtualMachine" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureVirtualMachine.png",
+ "AzureVirtualMachineClassic" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureVirtualMachineClassic.png",
+ "AzureVirtualMachineScaleSet" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureVirtualMachineScaleSet.png",
+ "AzureWebSlot" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureWebSlot.png",
+ "AzureWebTest" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Compute/AzureWebTest.png",
+ "AzureContainerApp" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Containers/AzureContainerApp.png",
+ "AzureContainerInstance" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Containers/AzureContainerInstance.png",
+ "AzureContainerRegistry" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Containers/AzureContainerRegistry.png",
+ "AzureKubernetesService" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Containers/AzureKubernetesService.png",
+ "AzureServiceEnvironment" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Containers/AzureServiceEnvironment.png",
+ "Azure" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/General/Azure.png",
+ "AzureWorkbook" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/General/AzureWorkbook.png",
+ "AzureWorkflow" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/General/AzureWorkflow.png",
+ "AzureActiveDirectory" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Identity/AzureActiveDirectory.png",
+ "AzureActiveDirectoryB2C" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Identity/AzureActiveDirectoryB2C.png",
+ "AzureActiveDirectoryConnectHealth" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Identity/AzureActiveDirectoryConnectHealth.png",
+ "AzureActiveDirectoryDomainServices" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Identity/AzureActiveDirectoryDomainServices.png",
+ "AzureActiveDirectoryGroup" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Identity/AzureActiveDirectoryGroup.png",
+ "AzureActiveDirectoryIdentityProtection" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Identity/AzureActiveDirectoryIdentityProtection.png",
+ "AzureActiveDirectoryRolesAndAdministrators" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Identity/AzureActiveDirectoryRolesAndAdministrators.png",
+ "AzureActiveDirectoryUser" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Identity/AzureActiveDirectoryUser.png",
+ "AzureAppRegistration" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Identity/AzureAppRegistration.png",
+ "AzureEnterpriseApplication" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Identity/AzureEnterpriseApplication.png",
+ "AzureIdentityGovernance" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Identity/AzureIdentityGovernance.png",
+ "AzureManagedIdentity" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Identity/AzureManagedIdentity.png",
+ "AzureApplicationGateway" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureApplicationGateway.png",
+ "AzureAzureDDoSProtection" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureAzureDDoSProtection.png",
+ "AzureBastion" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureBastion.png",
+ "AzureCDNProfile" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureCDNProfile.png",
+ "AzureDNS" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureDNS.png",
+ "AzureDNSServer" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureDNSServer.png",
+ "AzureExpressRoute" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureExpressRoute.png",
+ "AzureExpressRouteCircuit" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureExpressRouteCircuit.png",
+ "AzureExpressRouteDirect" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureExpressRouteDirect.png",
+ "AzureFirewall" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureFirewall.png",
+ "AzureFirewallManager" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureFirewallManager.png",
+ "AzureFrontDoor" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureFrontDoor.png",
+ "AzureFrontDoorService" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureFrontDoorService.png",
+ "AzureIPAddressSpace" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureIPAddressSpace.png",
+ "AzureIPGroup" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureIPGroup.png",
+ "AzureLoadBalancer" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureLoadBalance.png",
+ "AzureNAT" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureNA.png",
+ "AzureNetworkInterface" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureNetworkInterfac.png",
+ "AzureNSG" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureNS.png",
+ "AzurePrivateLink" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzurePrivateLin.png",
+ "AzurePrivateLinkHub" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzurePrivateLinkHu.png",
+ "AzurePrivateLinkService" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzurePrivateLinkServic.png",
+ "AzurePublicIPAddress" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzurePublicIPAddres.png",
+ "AzurePublicIPAddressClassic" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzurePublicIPAddressClassi.png",
+ "AzurePublicIPPrefix" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzurePublicIPPrefi.png",
+ "AzureRouteFilter" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureRouteFilte.png",
+ "AzureRouteTable" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureRouteTabl.png",
+ "AzureServiceEndpoint" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureServiceEndpoin.png",
+ "AzureServiceEndpointPolicy" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureServiceEndpointPolic.png",
+ "AzureSubnet" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureSubne.png",
+ "AzureTrafficManager" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureTrafficManager.png",
+ "AzureVirtualNetwork" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureVirtualNetwork.png",
+ "AzureVirtualNetworkPeering" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureVirtualNetworkPeering.png",
+ "AzureVirtualWAN" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureVirtualWAN.png",
+ "AzureVPNGateway" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureVPNGateway.png",
+"AzureAdvancedTools" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Web/AzureAdvancedTools.png",
+"AzureAPIManagement" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Web/AzureAPIManagement.png",
+"AzureAppServiceCertificate" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Web/AzureAppServiceCertificate.png",
+"AzureAppServiceDomain" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Web/AzureAppServiceDomain.png",
+"AzureCDN" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Web/AzureCDN.png",
+"AzureContainerSettings" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Web/AzureContainerSettings.png",
+"AzureCORS" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Web/AzureCORS.png",
+"AzureDeploymentCredentials" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Web/AzureDeploymentCredentials.png",
+"AzureLogStream" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Web/AzureLogStream.png",
+"AzureProperties" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Web/AzureProperties.png",
+"AzureQuota" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Web/AzureQuota.png",
+"AzureSearch" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Web/AzureSearch.png",
+"AzureSignalRService" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Web/AzureSignalRService.png",
+"AzureWebApp" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Web/AzureWebApp.png",
+"AzureBizTalk" :"https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Integration/AzureBizTalk.png",
+ "AzureEventGrid" :"https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Integration/AzureEventGrid.png",
+ "AzureEventGridDomain" :"https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Integration/AzureEventGridDomain.png",
+ "AzureServiceBusQueue" :"https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Integration/AzureServiceBusQueue.png",
+ "AzureServiceBus" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Integration/AzureServiceBus.png",
+"AzureServiceBusTopic" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Integration/AzureServiceBusTopic.png",
+"AzureSystemTopi" :"https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Integration/AzureSystemTopi.png",
+"AzureBlobStorage" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureBlobStorage.png",
+"AzureDataBox" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureDataBox.png",
+"AzureDataLakeStorage" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureDataLakeStorage.png",
+"AzureDiskStorage" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureDiskStorage.png",
+"AzureDiskStorageClassic" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureDiskStorageClassic.png",
+"AzureFileStorage" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureFileStorage.png",
+"AzureManagedDisks" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureManagedDisks.png",
+"AzureNetAppFiles" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureNetAppFiles.png",
+"AzureQueueStorage" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureQueueStorage.png",
+"AzureStorage" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureStorage.png",
+"AzureStorageClassic" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureStorageClassic.png",
+"AzureStorageContainer" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureStorageContainer.png",
+"AzureStorSimple" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Storage/AzureStorSimple.png",
+"AzureAnalysisServices" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Analytics/AzureAnalysisServices.png",
+"AzureDatabricks" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Analytics/AzureDatabricks.png",
+"AzureDataCatalog" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Analytics/AzureDataCatalog.png",
+"AzureDataExplorer" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Analytics/AzureDataExplorer.png",
+"AzureDataLakeStoreGen1" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Analytics/AzureDataLakeStoreGen1.png",
+"AzureEventHub" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Analytics/AzureEventHub.png",
+"AzureEventHubCluster" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Analytics/AzureEventHubCluster.png",
+"AzureHDInsightCluster" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Analytics/AzureHDInsightCluster.png",
+"AzureLogAnalyticsWorkspace" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Analytics/AzureLogAnalyticsWorkspace.png",
+"AzurePowerBIEmbedded" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Analytics/AzurePowerBIEmbedded.png",
+"AzurePurviewAccount" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Analytics/AzurePurviewAccount.png",
+"AzureStreamAnalyticsJob" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Analytics/AzureStreamAnalyticsJob.png",
+"AzureSynapseAnalytics" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Analytics/AzureSynapseAnalytics.png",
+"PowerBI" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Analytics/PowerBI.png"
+ }
+  ]
+  }
+
+'!$NBAzurePNG = { "Icons":[{ "AzureTrafficManager" : "https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist/Networking/AzureTrafficManager.png" }]}
