@@ -1,0 +1,38 @@
+
+' Styling
+' ##################################
+
+hide stereotype
+
+!definelong AzureEntityColoring(e_stereo)
+skinparam rectangle<<e_stereo>> {
+    BackgroundColor AZURE_BG_COLOR
+    BorderColor transparent
+    Shadowing false
+}
+!enddefinelong
+
+!define AZURE_PNG_ICON_SCALE 0.5
+
+' Overwriting Elements
+' ##################################
+
+!function GetAzureEntity_ext(e_alias, e_label, e_techn, e_color, e_sprite, e_stereo)
+!local $tempA = "" + $e_stereo
+!local e_img = $NBAzurePNG.Icons[0][$tempA]
+!return "<color:e_color><img:e_img{scale=AZURE_PNG_ICON_SCALE}></color>\ne_label\n[e_techn]"
+!enddefinelong
+
+
+!definelong AzureEntity(e_alias, e_label, e_techn, e_color, e_sprite, $e_stereo)
+rectangle "GetAzureEntity_ext(e_alias, e_label, e_techn, e_color, e_sprite, $e_stereo)" <<e_stereo>> as e_alias
+!enddefinelong
+
+!define AzureEntity(e_alias, e_label, e_techn, e_descr, e_color, e_sprite, e_stereo) AzureEntity(e_alias, e_label, e_techn, e_color, e_sprite, $e_stereo)
+
+
+!function GetAzureEntity_ext(e_alias, e_label, e_techn, e_color, e_sprite, e_stereo)
+!local $tempA = "" + $e_stereo
+!local e_img = $NBAzurePNG.Icons[0][$tempA]
+!return "<color:e_color><img:e_img{scale=AZURE_PNG_ICON_SCALE}></color>\ne_label\n[e_techn]"
+!enddefinelong
