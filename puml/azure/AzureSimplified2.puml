@@ -1,1 +1,30 @@
 
+ Styling
+' ##################################
+
+hide stereotype
+
+!definelong AzureEntityColoring(e_stereo)
+skinparam rectangle<<e_stereo>> {
+    BackgroundColor AZURE_BG_COLOR
+    BorderColor transparent
+    Shadowing false
+}
+!enddefinelong
+
+!define AZURE_PNG_ICON_SCALE 0.5
+
+' Overwriting Elements
+' ##################################
+
+
+!definelong AzureEntity(e_alias, e_label, e_techn, e_color, e_sprite, $e_stereo)
+!local $tempA = "" + $e_stereo
+!local $e_image = $NBAzurePNG.Icons[0][$tempA]
+AzureEntity_ext(e_alias, e_label, e_techn, e_color, e_sprite, $e_stereo,$e_image)
+!enddefinelong
+
+!define AzureEntity(e_alias, e_label, e_techn, e_descr, e_color, e_sprite, e_stereo) AzureEntity(e_alias, e_label, e_techn, e_color, e_sprite, $e_stereo)
+!definelong AzureEntity_ext(e_alias, e_label, e_techn, e_color, e_sprite, e_stereo,e_img)
+rectangle "<color:e_color><img:e_img{scale=AZURE_PNG_ICON_SCALE}></color>\ne_label\n[e_techn]" <<e_stereo>> as e_alias
+!enddefinelong
