@@ -13,3 +13,12 @@ rectangle "<img:https://raw.githubusercontent.com/nicobit/nb-plantuml/main/puml/
 !definelong User_Call(e_alias, e_label)
 rectangle "<img:https://raw.githubusercontent.com/nicobit/nb-plantuml/main/puml/images/Users/call_center_agent.png{scale=NB_ICON_SCALE}>\ne_label\n" <<NBIcon>> as e_alias
 !enddefinelong
+
+
+!definelong Cluster_Server(e_alias, e_label)
+rectangle "<img:https://raw.githubusercontent.com/nicobit/nb-plantuml/main/puml/images/Servers/cluster_server.png{scale=NB_ICON_SCALE}>\ne_label\n" <<NBIcon>> as e_alias
+!enddefinelong
+
+!definelong DirSync_Server(e_alias, e_label)
+rectangle "<img:https://raw.githubusercontent.com/nicobit/nb-plantuml/main/puml/images/Servers/dirsync_server.png{scale=NB_ICON_SCALE}>\ne_label\n" <<NBIcon>> as e_alias
+!enddefinelong
