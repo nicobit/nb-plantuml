@@ -9,3 +9,7 @@ skinparam rectangle<<NBIcon>> {
 !definelong User_Monitor(e_alias, e_label)
 rectangle "<img:https://raw.githubusercontent.com/nicobit/nb-plantuml/main/puml/images/Users/user_monitor.png{scale=NB_ICON_SCALE}>\ne_label\n" <<NBIcon>> as e_alias
 !enddefinelong
+
+!definelong User_Call(e_alias, e_label)
+rectangle "<img:https://raw.githubusercontent.com/nicobit/nb-plantuml/main/puml/images/Users/call_center_agent.png{scale=NB_ICON_SCALE}>\ne_label\n" <<NBIcon>> as e_alias
+!enddefinelong
