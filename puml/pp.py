@@ -1,139 +1,52 @@
+from agnos import Agent, Workspace, TaskExecutor
+from agnos.client import OpenAIChatCompletionClient
+from agnos.token_providers import AzureTokenProvider
 import os
-import json
-from pathlib import Path
-import datetime
 
-from agno.agent import Agent
-from agno.models.openai import OpenAIChat
-from agno.tools.local_file_system import LocalFileSystemTools
-from agno.tools.python import PythonTools
+# 🌐 Azure OpenAI Setup
+AZURE_API_KEY = os.environ.get("AZURE_API_KEY")
+AZURE_ENDPOINT = os.environ.get("AZURE_ENDPOINT")
+AZURE_DEPLOYMENT = os.environ.get("AZURE_DEPLOYMENT")  # e.g., "gpt-4"
 
-# === Setup ===
-os.environ["OPENAI_API_KEY"] = "sk-YOUR-KEY"
+# Token provider with default Azure credentials (interactive, environment or managed identity)
+token_provider = AzureTokenProvider()
 
-ROOT_DIR = Path.cwd()
-DATA_DIR = ROOT_DIR / "data"
-LOG_FILE = ROOT_DIR / "submission_log.json"
+client = OpenAIChatCompletionClient(
+    api_key=AZURE_API_KEY,
+    endpoint=AZURE_ENDPOINT,
+    deployment=AZURE_DEPLOYMENT,
+    token_provider=token_provider
+)
 
-TRAIN_PATH = DATA_DIR / "train.csv"
-VAL_PATH = DATA_DIR / "val.csv"
-TEST_PATH = DATA_DIR / "test.csv"
+workspace = Workspace()
 
-file_tools = LocalFileSystemTools()
-python_tool = PythonTools()
+# Define the four agents using prompts only
+eda_agent = Agent(
+    name="EDA_Agent",
+    model=client,
+    description="""You are an expert data scientist. Your job is to perform Exploratory Data Analysis on MSFT stock data 
+    (train.csv, val.csv, test.csv in /data). Create a script named EDA.py. It must load train.csv, describe statistics, plot trends,
+    check missing values, and save EDA.py in the working directory. Execute and debug the script if needed."""
+)
 
-script_files = {
-    "EDA_Agent": "EDA.py",
-    "FeatureEngineering_Agent": "FEATURE.py",
-    "Modelling_Agent": "MODEL.py",
-    "Evaluation_Agent": "EVAL.py",
-}
+feature_agent = Agent(
+    name="FeatureEngineering_Agent",
+    model=client,
+    description="""You are a feature engineering expert. Your task is to create FEATURE.py that loads EDA-transformed data,
+    computes next-day log returns as Target_Return, adds technical indicators like moving averages or volume changes,
+    and saves the script as FEATURE.py. Execute and debug it."""
+)
 
-submission_log = {}
+model_agent = Agent(
+    name="Modelling_Agent",
+    model=client,
+    description="""You are an expert ML engineer. Your job is to write MODEL.py that trains a regression model on the training set
+    (with features from FEATURE.py), validates on val.csv, and saves the model. Use sklearn or XGBoost. Execute and debug it."""
+)
 
-PROMPTS = {
-    "EDA_Agent": f"""
-You are EDA_Agent.
-
-Use the following dataset paths:
-- Train: {TRAIN_PATH}
-- Validation: {VAL_PATH}
-- Test: {TEST_PATH}
-
-Steps:
-1. Load all 3 datasets.
-2. Confirm 'Close' column exists. If not, raise an error.
-3. Compute Target_Return = np.log(df["Close"].shift(-1)) - np.log(df["Close"])
-4. Save and run a Python script called EDA.py that:
-   - prints head, tail, missing values, and basic stats
-   - plots price & volume history (save as PNG)
-   - prints correlation matrix with OHLCV and Target_Return
-
-After success, reply with “EDA complete”.
-""",
-
-    "FeatureEngineering_Agent": f"""
-You are FeatureEngineering_Agent.
-
-Steps:
-1. Read the datasets with Target_Return.
-2. Engineer at least 8 features including:
-   - log_volume = np.log1p(Volume)
-   - rolling_mean_3 = df["Close"].rolling(3).mean()
-   - rolling_std_5 = df["Close"].rolling(5).std()
-   - RSI
-   - ATR
-   - day_of_week_sin/cos
-   - lagged returns
-3. ⚠️ Do not overwrite train.csv, val.csv, or test.csv.
-4. Save features to a new file named features.csv and a script FEATURE.py.
-5. Run and debug FEATURE.py until success.
-
-Reply with “Features ready”.
-""",
-
-    "Modelling_Agent": f"""
-You are Modelling_Agent.
-
-Steps:
-1. Load features.csv.
-2. Split based on:
-   - Train index = length of train.csv
-   - Validation index = length of val.csv
-3. Train 3 models:
-   - RandomForestRegressor
-   - GradientBoostingRegressor
-   - LightGBM (if available)
-4. Use RMSE on validation to select best.
-5. Save best model as model.pkl in working dir.
-6. Create MODEL.py and debug until complete.
-
-Reply with “Model trained”.
-""",
-
-    "Evaluation_Agent": f"""
-You are Evaluation_Agent.
-
-Steps:
-1. Load model.pkl from working dir.
-2. Load test set from {TEST_PATH} and compute Target_Return.
-3. Use model to predict and compute RMSE.
-4. Save EVAL.py and output MSFT_Score.txt with: RMSE: <value>
-5. Append RMSE to submission_log.json.
-
-Reply with “Evaluation done”.
-"""
-}
-
-def make_agent(name, instructions):
-    return Agent(
-        model=OpenAIChat(id="gpt-4o"),
-        name=name,
-        instructions=instructions,
-        tools=[file_tools, python_tool],
-        debug_mode=True
-    )
-
-async def run_agent(agent_name, script_key):
-    prompt = PROMPTS[agent_name]
-    agent = make_agent(agent_name, prompt)
-    print(f"\n=== Running {agent_name} ===")
-    result = await agent.run("Start now.")
-    submission_log[agent_name] = {
-        "prompt": prompt.strip(),
-        "output_log": result.strip()
-    }
-
-    script_path = ROOT_DIR / script_files[agent_name]
-    if script_path.exists():
-        submission_log[script_key] = script_path.read_text().strip()
-    else:
-        submission_log[script_key] = "<script not found>"
-
-async def main():
-    await run_agent("EDA_Agent", "EDA_Script")
-    await run_agent("FeatureEngineering_Agent", "FeatureEngineering_Script")
-    await run_agent("Modelling_Agent", "Modeling_Script")
-    await run_agent("Evaluation_Agent", "Evaluation_Script")
-    LOG_FILE.write_text(json.dumps(submission_log, indent=2))
-    print(f"\n✅ submission_log.json written to: {LOG_FILE}")
+eval_agent = Agent(
+    name="Evaluation_Agent",
+    model=client,
+    description="""You are an evaluator. Create EVAL.py which loads the model from MODEL.py, predicts log returns on test.csv,
+    computes RMSE, and writes it as: 'RMSE: <float>' to MSFT_Score.txt. Save a JSON log as submission_log.json with step details."""
+)
