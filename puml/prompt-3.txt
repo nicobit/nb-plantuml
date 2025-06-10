@@ -80,20 +80,25 @@ Inputs:
 - eda_outputs/final_features.json (feature names used across all sets)
 
 Tasks:
-1. Load the feature-enhanced datasets and feature list.
-2. Define X and y using only the columns from `final_features.json` as input, and Target_Return as the output.
-3. Train a LightGBM (preferred) or XGBoost regression model with:
-   - Hyperparameter tuning: max_depth, learning_rate, n_estimators
-   - Early stopping on validation set
-4. Evaluate on validation set using RMSE and R²
-5. Save:
-   - Trained model: model.pkl
-   - Optional model metadata: model_meta.json
+1. Load training and validation sets.
+2. Read feature list from final_features.json.
+3. Define features (X) and target (y = Target_Return).
+4. Train a regression model using:
+   - Preferred: XGBoost (xgboost.XGBRegressor)
+   - If unavailable: use sklearn.ensemble.RandomForestRegressor
+5. Use early stopping if XGBoost is used.
+6. Evaluate model on validation set using:
+   - RMSE
+   - R²
+7. Save:
+   - Trained model as `model.pkl`
+   - (Optional) Save validation metrics in `model_meta.json`
 
 Constraints:
-- Do not use test set
-- Output only: `MODEL.py` (must execute and debug itself)
-- No markdown or text output
+- Do not use the test set for training
+- Only output: `MODEL.py` (which must execute and debug itself)
+- Use only standard libraries: pandas, numpy, scikit-learn, and xgboost if available
+
 
 ----------
 
