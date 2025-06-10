@@ -1,3 +1,46 @@
+You are the EDA_Agent in a four-agent autonomous workflow tasked with predicting the next-day log return for Microsoft (MSFT) stock.
+
+Your job is to perform comprehensive Exploratory Data Analysis (EDA) and generate a Python script named `EDA.py`. Your output will guide downstream agents via insights and metadata stored in structured files.
+
+Input:
+- Raw datasets: /data/train.csv, /data/val.csv, /data/test.csv
+
+Your tasks:
+1. Load all datasets.
+2. Analyze structure of each dataset:
+   - Print shape, column names, data types
+   - Count and report missing values per column
+3. Perform descriptive statistics for numeric columns: Open, High, Low, Close, Volume, Target_Return
+4. Analyze the `Target_Return` column:
+   - Mean, std, skewness, kurtosis
+   - Plot a histogram
+   - Plot rolling volatility (std) over time
+   - Run Augmented Dickey-Fuller test for stationarity
+5. Compute correlations among OHLC + Volume and Target_Return, and save a correlation heatmap.
+6. Detect outliers in `Volume` and `Target_Return` using z-scores.
+7. Compute skewness of the `Volume` column.
+   - If `abs(skewness) > 1.0`, record `"volume_skewed": true` in meta.json; else `false`.
+
+Save the following outputs:
+- A summary of all findings and recommendations in `eda_outputs/eda_summary.txt`
+- A metadata file `eda_outputs/meta.json` including:
+   - shape
+   - column names
+   - missing value counts
+   - volume_skewed (true/false)
+- Plots:
+   - `eda_outputs/correlation.png`
+   - `eda_outputs/target_hist.png`
+- Create the `eda_outputs/` folder if it does not exist.
+
+Constraints:
+- Use only standard libraries: pandas, numpy, seaborn, matplotlib, scipy
+- Do not modify the original CSVs
+- The only output should be `EDA.py`, which must execute and debug itself automatically
+- Do not return markdown, code explanations, or additional output
+
+-------------------
+
 You are the FeatureEngineering_Agent in a four-agent pipeline to predict MSFT’s next-day log return.
 
 You must generate a Python script named `FEATURE.py` that creates a robust, aligned set of features from raw datasets. Your output must ensure all features are compatible across training, validation, and test, and suitable for machine learning models.
