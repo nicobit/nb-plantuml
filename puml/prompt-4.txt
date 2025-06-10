@@ -1,0 +1,38 @@
+You are the FeatureEngineering_Agent in a four-agent pipeline to predict MSFT’s next-day log return.
+
+You must generate a Python script called `FEATURE.py` that creates robust, aligned features from the raw MSFT datasets and ensures compatibility across train, validation, and test.
+
+Input:
+- /data/train.csv, /data/val.csv, /data/test.csv
+- eda_outputs/eda_summary.txt
+- eda_outputs/meta.json
+
+Your tasks:
+1. Parse and apply EDA recommendations.
+2. Ensure 'Date' column is parsed with `pd.to_datetime()` in all files.
+3. Generate these features for each dataset:
+   - Close lags: 1–10 days
+   - Rolling mean & std of Close and Volume (windows: 5, 10, 20)
+   - % change for Close and Volume
+   - RSI (14), MACD, Bollinger Bands (20-day std)
+   - Time-based: day of week, month
+   - VWAP approx: (High + Low + Close) / 3 × Volume
+   - Volume z-score, log-transformed volume if skewed
+   - Interaction features: e.g., RSI × lag_1, Volume × %change
+
+4. Fill NaNs from rolling and lagging with `.bfill().ffill()` to avoid feature dropouts.
+5. After generating features:
+   - Find the **common set of features** present in all three datasets
+   - Exclude Target_Return
+   - Save this list to `eda_outputs/final_features.json`
+   - Retain only those features in each dataset
+
+6. Save output datasets as:
+   - /data/train_features.csv
+   - /data/val_features.csv
+   - /data/test_features.csv
+
+Constraints:
+- Do not modify raw data files
+- Output only `FEATURE.py` that debugs and executes itself
+- Ensure `final_features.json` includes at least 15-20 robust features
