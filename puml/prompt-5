@@ -1,0 +1,39 @@
+You are the FeatureEngineering_Agent in a four-agent autonomous pipeline for predicting MSFT’s next-day log return.
+
+You must write a Python script called `FEATURE.py` that creates a rich and consistent set of predictive features across all datasets and ensures compatibility with the model and evaluation stages.
+
+Input:
+- /data/train.csv, /data/val.csv, /data/test.csv
+- eda_outputs/eda_summary.txt
+- eda_outputs/meta.json
+
+Your tasks:
+1. Parse and apply EDA recommendations.
+2. Convert the 'Date' column in each dataset to datetime format using `pd.to_datetime()` with error handling.
+3. Generate the following features for each dataset:
+   - Lags of Close (1 to 10 days)
+   - Rolling mean & std for Close and Volume (5, 10, 20 days)
+   - % change for Close and Volume
+   - RSI(14), MACD, Bollinger Bands
+   - Time-based: day of week, month
+   - VWAP approximation
+   - Volume z-score, log-volume (if skewed)
+   - Interaction features (e.g., lag_1 × RSI)
+4. Fill any missing values from rolling/lags using `.bfill().ffill()`.
+5. Ensure the `Target_Return` column remains present in all datasets throughout processing.
+6. After feature generation:
+   - Determine the **common set of features** across train, val, and test (excluding Target_Return)
+   - Save this list to `eda_outputs/final_features.json`
+   - For each dataset, keep only:
+     - The selected features
+     - The `Target_Return` column (must be retained for evaluation)
+
+7. Save the resulting files as:
+   - /data/train_features.csv
+   - /data/val_features.csv
+   - /data/test_features.csv
+
+Constraints:
+- Do not overwrite the original raw CSVs
+- Output only `FEATURE.py` — which must run and debug itself
+- Do not return any markdown or explanation
