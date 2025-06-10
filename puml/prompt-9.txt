@@ -1,0 +1,139 @@
+# ----------  Prompt 1 : EDA_Agent  ----------
+Role
+Act as EDA_Agent in a four-step pipeline that predicts Microsoft’s next-day log return (Target_Return).
+
+Input files
+/data/train.csv
+/data/val.csv
+/data/test.csv
+
+Deliverable
+Create, run and debug one file named EDA.py.
+
+What EDA.py must do
+1. Load the three CSVs into pandas DataFrames, preserving date order.
+2. For each set record: shape, column names, data types (as strings), and per-column missing counts.
+3. On numeric columns Open, High, Low, Close, Volume, Target_Return compute: mean, std, min, max, skew, kurtosis.
+4. Analyse Target_Return:
+   • mean, std, skew, kurtosis
+   • 20-day rolling std plot → eda_outputs/target_vol.png
+   • histogram → eda_outputs/target_hist.png
+   • Augmented Dickey-Fuller test results
+5. Produce correlation heatmap of OHLC + Volume + Target_Return → eda_outputs/correlation.png
+6. Flag outliers (> |3| z-score) in Volume and Target_Return.
+7. Determine volume_skewed = (abs(skew(Volume)) > 1.0).
+8. Write eda_outputs/meta.json containing shape, columns, dtypes, missing counts, volume_skewed.
+9. Save concise bullet-style insights to eda_outputs/eda_summary.txt, ending with:
+   Recommended: clip Target_Return to ±0.20 to dampen extreme outliers.
+10. Use only pandas, numpy, matplotlib, seaborn, scipy, statsmodels, json.
+11. Do not modify the original CSVs.
+12. Leave only EDA.py and the eda_outputs folder when finished.
+# ----------  end EDA_Agent prompt ----------
+# ----------  Prompt 2 : FeatureEngineering_Agent  ----------
+Role
+Act as FeatureEngineering_Agent.
+
+Inputs
+/data/train.csv
+/data/val.csv
+/data/test.csv
+eda_outputs/meta.json
+eda_outputs/eda_summary.txt
+
+Deliverable
+Produce, run and debug one file named FEATURE.py.
+
+Tasks for FEATURE.py
+1. Read the three raw CSVs, sort each by Date, reset index.
+2. Convert Date to pandas datetime. Derive:
+   • day_of_week (0–6)
+   • month (1–12)
+   • time_index = days since first date
+3. Remove the original Date column.
+4. Create leakage-free features (all based on data shifted by one day):
+   • Close lags 1-10
+   • Percentage change of Close and Volume
+   • High–Low spread = (High − Low)/Close
+   • Open–Close diff = (Open − Close)/Close
+   • Rolling mean and std of Close and Volume over windows 5, 10, 20
+   • 14-day ATR
+   • 10-day rolling std of one-day returns
+   • RSI-14, MACD difference, Bollinger-band width (20)
+   • Seasonality terms: sin(2π·time_index/365) and cos(…)
+   • Volume z-score and, if volume_skewed is true, also log1p(Volume)
+   • Interaction feature: lag_1 × RSI14
+5. Replace ±∞ with NaN, back-fill then forward-fill, then drop remaining NaNs.
+6. Clip Target_Return to ±0.20 in all three sets.
+7. Ensure Target_Return is present and otherwise unmodified.
+8. Determine the common predictor set (exclude Target_Return) and save it to eda_outputs/final_features.json.
+9. Save processed data to /data/train_features.csv, /data/val_features.csv, /data/test_features.csv.
+10. Append the note “Target_Return clipped at ±0.20” to eda_outputs/eda_summary.txt.
+11. Use only pandas and numpy; implement indicators manually or with vectorised operations.
+12. Leave only FEATURE.py and the new artefacts when complete.
+# ----------  end FeatureEngineering_Agent prompt ----------
+# ----------  Prompt 3 : Modelling_Agent  ----------
+Role
+Act as Modelling_Agent.
+
+Inputs
+/data/train_features.csv
+/data/val_features.csv
+eda_outputs/final_features.json
+
+Deliverable
+Generate, run and debug MODEL.py that trains an ensemble of two models and saves them.
+
+Requirements for MODEL.py
+1. Load the training and validation feature files.
+2. Create predictors and target:
+   X_train, y_train from training rows; X_val, y_val from validation rows.
+3. Assign row-level sample weights: weight = 0.5 if abs(y_train) > 0.10, else 1.0.
+4. Conduct two independent hyper-parameter searches:
+   • First search uses random_state = 42.
+   • Second search uses random_state = 2025.
+   • Preferred model family: XGBoost regressor; if the library is absent, use RandomForest regressor.
+   • Search tool: RandomizedSearchCV, 20 random draws, TimeSeriesSplit with 3 splits,
+     negative RMSE scoring, single-threaded execution, error_score="raise".
+   • Parameter ranges:
+     – Trees/estimators 400-1000
+     – Learning-rate 0.01-0.05
+     – Depth 3/5/7
+     – Child/leaf weight 1/3/5
+     – Subsample 0.8/1.0
+     – Column sample 0.8/1.0
+     – For XGBoost also Gamma 0/0.1/0.3 and Reg-lambda 1/3/5.
+5. Fit each search using only the training rows and the sample weights.
+6. Re-fit each best estimator on the full training set (same weights).
+7. Ensemble: predict on validation with both models, average the two predictions, compute validation RMSE and R², print both.
+8. Save a Python dictionary {"model_A": model1, "model_B": model2} to model.pkl via joblib.
+9. Write model_meta.json containing val-RMSE, val-R², and both models’ hyper-parameters.
+10. Allowed libraries: pandas, numpy, scikit-learn, joblib, json, datetime, and xgboost if available.
+11. Do not read or modify the test set and do not recalculate Target_Return.
+12. Leave only MODEL.py, model.pkl, and model_meta.json when finished.
+# ----------  end Modelling_Agent prompt ----------
+# ----------  Prompt 4 : Evaluation_Agent  ----------
+Role
+Act as Evaluation_Agent.
+
+Inputs
+model.pkl
+/data/test_features.csv
+eda_outputs/final_features.json
+
+Deliverable
+Produce, run and debug EVAL.py; generate the competition artefacts.
+
+What EVAL.py must do
+1. Load the dictionary from model.pkl (keys model_A, model_B).
+2. Prepare predictors and true labels from the test feature file; align columns to eda_outputs/final_features.json.
+3. Obtain predictions from both models, average them, compute RMSE versus Target_Return.
+4. Write MSFT_Score.txt with exactly one line:
+   RMSE: <float>
+5. Create submission_log.json containing:
+   timestamp (UTC ISO-8601),
+   artifacts [ "EDA.py", "FEATURE.py", "MODEL.py", "EVAL.py", "model.pkl", "MSFT_Score.txt" ],
+   score { "metric": "RMSE", "value": <float> }.
+6. Use only pandas, numpy, scikit-learn, joblib, json, datetime.
+7. Produce no plots and do no retraining.
+8. Leave only EVAL.py, MSFT_Score.txt, and submission_log.json in the working directory.
+# ----------  end Evaluation_Agent prompt ----------
