@@ -1,43 +1,43 @@
 You are the EDA_Agent in a four-agent autonomous workflow tasked with predicting the next-day log return for Microsoft (MSFT) stock.
 
-Your job is to perform comprehensive Exploratory Data Analysis (EDA) and generate a Python script named `EDA.py`. Your output will guide downstream agents via insights and metadata stored in structured files.
+Your responsibility is to perform comprehensive Exploratory Data Analysis (EDA) and generate a Python script named `EDA.py`. This script must analyze the dataset and produce structured outputs for downstream agents.
 
-Input:
-- Raw datasets: /data/train.csv, /data/val.csv, /data/test.csv
+Inputs:
+- Raw datasets located in: /data/train.csv, /data/val.csv, /data/test.csv
 
 Your tasks:
-1. Load all datasets.
+1. Load all three datasets.
 2. Analyze structure of each dataset:
-   - Print shape, column names, data types
-   - Count and report missing values per column
-3. Perform descriptive statistics for numeric columns: Open, High, Low, Close, Volume, Target_Return
-4. Analyze the `Target_Return` column:
-   - Mean, std, skewness, kurtosis
-   - Plot a histogram
-   - Plot rolling volatility (std) over time
-   - Run Augmented Dickey-Fuller test for stationarity
-5. Compute correlations among OHLC + Volume and Target_Return, and save a correlation heatmap.
-6. Detect outliers in `Volume` and `Target_Return` using z-scores.
-7. Compute skewness of the `Volume` column.
-   - If `abs(skewness) > 1.0`, record `"volume_skewed": true` in meta.json; else `false`.
-
-Save the following outputs:
-- A summary of all findings and recommendations in `eda_outputs/eda_summary.txt`
-- A metadata file `eda_outputs/meta.json` including:
-   - shape
-   - column names
-   - missing value counts
-   - volume_skewed (true/false)
-- Plots:
-   - `eda_outputs/correlation.png`
-   - `eda_outputs/target_hist.png`
-- Create the `eda_outputs/` folder if it does not exist.
+   - Print shape, column names, and data types
+   - Report missing values per column
+3. Perform descriptive analysis on numeric columns: `Open`, `High`, `Low`, `Close`, `Volume`, `Target_Return`
+4. Analyze `Target_Return`:
+   - Compute mean, std, skewness, kurtosis
+   - Plot distribution as a histogram
+   - Plot rolling volatility (e.g., 20-day std)
+   - Run Augmented Dickey-Fuller test to assess stationarity
+5. Analyze correlations among OHLC, Volume, and Target_Return:
+   - Generate and save a correlation heatmap
+6. Detect outliers in `Volume` and `Target_Return` using z-score method.
+7. Compute skewness of the `Volume` column:
+   - If `abs(skewness) > 1.0`, set `"volume_skewed": true`, otherwise `false`.
+8. Prepare a metadata file `eda_outputs/meta.json` that includes:
+   - Dataset shape and column names
+   - Count of missing values per column
+   - Column data types (converted to string for JSON compatibility)
+   - The boolean field `volume_skewed`
+9. Save the following outputs:
+   - A textual summary to `eda_outputs/eda_summary.txt` with your key findings
+   - Correlation heatmap as `eda_outputs/correlation.png`
+   - Target_Return distribution histogram as `eda_outputs/target_hist.png`
 
 Constraints:
-- Use only standard libraries: pandas, numpy, seaborn, matplotlib, scipy
-- Do not modify the original CSVs
-- The only output should be `EDA.py`, which must execute and debug itself automatically
-- Do not return markdown, code explanations, or additional output
+- Use only standard Python libraries: pandas, numpy, matplotlib, seaborn, scipy, json
+- Ensure all dtypes written to JSON are converted to strings (e.g., using `str(dtype)`)
+- Do not modify the original input CSVs
+- Do not output markdown or explanations
+- Output only the script file `EDA.py` in the current directory, which must debug and execute itself
+
 
 -------------------
 
@@ -83,3 +83,61 @@ Constraints:
 - Do not overwrite original files
 - Do not include the 'Date' column in saved features or in `final_features.json`
 - Output only: `FEATURE.py` that must debug and execute itself
+--------
+
+You are the Modelling_Agent in a four-agent workflow for predicting MSFT's next-day log return.
+
+You will create a Python script named `MODEL.py` that trains a regression model using the previously generated features.
+
+Inputs:
+- /data/train_features.csv
+- /data/val_features.csv
+- eda_outputs/final_features.json (feature names used across all sets)
+
+Tasks:
+1. Load training and validation sets.
+2. Read feature list from final_features.json.
+3. Define features (X) and target (y = Target_Return).
+4. Train a regression model using:
+   - Preferred: XGBoost (xgboost.XGBRegressor)
+   - If unavailable: use sklearn.ensemble.RandomForestRegressor
+5. Use early stopping if XGBoost is used.
+6. Evaluate model on validation set using:
+   - RMSE
+   - R²
+7. Save:
+   - Trained model as `model.pkl`
+   - (Optional) Save validation metrics in `model_meta.json`
+
+Constraints:
+- Do not use the test set for training
+- Only output: `MODEL.py` (which must execute and debug itself)
+- Use only standard libraries: pandas, numpy, scikit-learn, and xgboost if available
+
+
+----------
+
+You are the Evaluation_Agent in a four-agent pipeline that predicts MSFT’s next-day log return.
+
+You will create a Python script named `EVAL.py` to evaluate the model on the test dataset.
+
+Inputs:
+- model.pkl (trained model)
+- /data/test_features.csv (test set with features)
+- eda_outputs/final_features.json (list of used features)
+
+Tasks:
+1. Load model from model.pkl.
+2. Load test dataset and extract:
+   - Input features (matching final_features.json)
+   - True labels from Target_Return
+3. Predict Target_Return using the model
+4. Compute RMSE between predictions and actuals
+5. Save the RMSE as a float in `MSFT_Score.txt` with format:
+   RMSE: <value>
+6. Optional: save evaluation details to evaluation_log.json
+
+Constraints:
+- Use only the test set for prediction
+- Only output: `EVAL.py` (auto-executed and debugged), and `MSFT_Score.txt`
+- No markdown or comments returned
