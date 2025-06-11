@@ -269,4 +269,61 @@ RECOMMENDATIONS FOR LOWER RMSE
    • model.pkl          (dict with keys: estimators, meta)
    • model_meta.json
 ─────────────────────────────────────────
+----------------------------
+
+
+─────────────────────────────────────────────────────────────
+WHAT TO DO  (revised – loop-safe)
+─────────────────────────────────────────────────────────────
+• Set a global random seed of 42.
+
+• Load predictor_list from final_features.json.
+  Target column is “Target_return” (not in that list).
+  Build X_train, y_train, X_val, y_val accordingly.
+
+• Drop any predictor whose training column has
+    – zero variance  OR
+    – the same value in > 99.9 % of rows.
+  (This prevents LightGBM from cycling on constant features.)
+
+• Extract sample_w from the data (default 1.0).
+
+• Define a 40-trial hyper-parameter search for **LightGBM** with:
+    – n_estimators (num_iterations) 250 → 1000
+    – learning_rate  0.01 → 0.05
+    – num_leaves     31 → 127
+    – max_depth      -1, 5, 7
+    – min_gain_to_split 0  or  0.001        ← NEW
+    – min_data_in_leaf  20 → 100
+    – bagging_fraction  0.8 or 1.0
+    – feature_fraction  0.8 or 1.0
+    – reg_lambda        0 → 5
+  Early-stop after 50 rounds on a 3-fold TimeSeriesSplit.
+  Put a **600-second wall-clock timeout** on the entire search; abort
+  remaining trials if time is exceeded.
+
+• If LightGBM training raises an exception OR returns 0 trees,
+  **fallback** to a RandomForestRegressor with 600 trees,
+  max_depth = None, max_features = "sqrt".
+
+• Train an **ExtraTreesRegressor** with 600 trees
+  (square-root features, min_samples_leaf = 2).
+
+• Fit a linear meta-model on the two validation prediction vectors.
+
+• Print validation RMSE, MAE, R² once.
+
+• Save the bundle:
+    {
+      "estimators": {"lgbm_or_rf": <model_A>,
+                     "etr": <extra_trees>},
+      "meta": <linear_stack>
+    }  →  model.pkl   (joblib)
+
+• Write model_meta.json with metrics, best params, UTC timestamp.
+
+• Stay within 10 min CPU and < 4 GB RAM.
+  Allowed libraries: pandas, numpy, scikit-learn, lightgbm,
+  joblib, optuna (optional).
+─────────────────────────────────────────────────────────────
 
