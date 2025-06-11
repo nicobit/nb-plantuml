@@ -327,3 +327,107 @@ WHAT TO DO  (revised – loop-safe)
   joblib, optuna (optional).
 ─────────────────────────────────────────────────────────────
 
+
+
+────────────────────────────────────────────────────────
+🤖  PROMPT 3 — MODELLING_AGENT   (runtime-safe edition)
+────────────────────────────────────────────────────────
+
+1. INPUT FILES
+   • /data/train_features.csv
+   • /data/val_features.csv
+   • eda_outputs/final_features.json      (predictor names only)
+
+────────────────────────────────────────────────────────
+2. ACTIONS
+────────────────────────────────────────────────────────
+WHAT TO DO
+• Set `random_state = 42` globally.
+
+• Load `final_features.json` → predictor_list.
+  Target column is “Target_return” (present in the CSVs but NOT in predictor_list).
+
+• Build:
+    X_train = train_df[predictor_list]
+    y_train = train_df["Target_return"]
+    X_val   =  val_df[predictor_list]
+    y_val   =  val_df["Target_return"]
+
+• Extract `sample_w` from both data sets; if absent, create a 1.0 vector.
+
+• **Pre-clean predictors**
+  Drop any column that is constant or has the same value in > 99.9 % of rows.
+
+• **LightGBM base learner**
+  – Hyper-parameter search: 40 trials, TimeSeriesSplit(n_splits=3).  
+  – Parameter bounds  
+       num_iterations     : 250 – 800  
+       learning_rate      : 0.01 – 0.05  
+       num_leaves         : 31 – 127  
+       max_depth          : −1 | 5 | 7  
+       min_data_in_leaf   : 20 – 100  
+       min_gain_to_split  : 0 | 0.001 | 0.005  
+       max_bin            : 63 | 127  
+       feature_fraction   : 0.8 | 1.0  
+       bagging_fraction   : 0.8 | 1.0  
+       bagging_freq       : 1  
+       reg_lambda         : 0 – 5  
+       objective          : “regression”  
+       metric             : “rmse”  
+  – **Early stopping**: pass `(X_val, y_val)` as the `eval_set` and set  
+       `early_stopping_rounds = 50`.  
+  – **Time guard**: abort the entire search after 600 s wall-clock.
+
+• **Fallback**  
+  If LightGBM errors or returns zero trees, fit a RandomForestRegressor
+  (600 trees, max_features=“sqrt”, n_jobs=-1) using the same weights.
+
+• **ExtraTrees secondary learner**
+  – 600 trees, max_features=“sqrt”, min_samples_leaf=2, n_jobs=-1.
+
+• **Linear meta-stack**
+  – Collect validation predictions from both base models.  
+  – Fit an ordinary least-squares LinearRegression on
+      `[pred_lgbm_or_rf , pred_etr] → y_val`.
+
+• **Validate once** on `y_val`; print RMSE, MAE, R² only once.
+
+• **Save bundle** to model.pkl (joblib):
+    {
+      "estimators": {
+          "primary"  : lgbm_or_rf,
+          "secondary": extratrees
+      },
+      "meta": linear_meta
+    }
+
+• Write model_meta.json with:
+    { "val_metrics": {...},
+      "best_params": {...},
+      "timestamp_utc": "<ISO-8601>" }
+
+• Keep total wall-clock ≤ 10 minutes and memory ≤ 4 GB.
+  Allowed libs: pandas, numpy, scikit-learn, lightgbm, joblib,
+  optuna (optional).
+
+────────────────────────────────────────────────────────
+WHAT NOT TO DO
+• ✗ Do NOT shuffle rows in cross-validation — preserve time order.
+• ✗ Do NOT disable early stopping; it is mandatory.
+• ✗ Avoid GPU-only libraries or CUDA-dependent flags.
+
+────────────────────────────────────────────────────────
+RECOMMENDATIONS FOR LOWER RMSE
+• Low learning_rate with capped num_iterations balances speed and accuracy.
+• Stacking a GBM (bias-strong) with ExtraTrees (variance-strong) plus a
+  linear meta-model typically shaves several basis points off RMSE.
+• Use inverse-volatility `sample_w` weights (1/(|Target_return|+0.001)) to
+  concentrate loss where the evaluation metric is most sensitive.
+
+────────────────────────────────────────────────────────
+3. SUMMARY ARTEFACTS
+   • MODEL.py        (self-running, self-debugging)
+   • model.pkl       (dict: estimators + meta)
+   • model_meta.json
+────────────────────────────────────────────────────────
+
