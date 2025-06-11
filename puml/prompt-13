@@ -1,0 +1,188 @@
+📊 Prompt 1 EDA_Agent
+1 Input files
+• /data/train_clean.csv
+• /data/val_clean.csv
+• /data/test_clean.csv
+
+2 Actions
+
+What to do
+
+Load all three files, parse the Date column, sort by date.
+
+Profile each set: shape, columns, dtypes, missing percentage.
+
+Compute mean, standard deviation, skewness, kurtosis, 1st & 99th percentiles for Open, High, Low, Close, Volume and Target_return.
+
+Perform target diagnostics: Augmented Dickey-Fuller p-value on Target_return; 50-bin histogram; 20-day rolling volatility plot; 20-day “volatility-of-volatility” series.
+
+Build a correlation heat-map for all OHLCV fields plus Target_return.
+
+Flag outliers where absolute z-score > 3 for Volume or Target_return.
+
+Derive and store:
+lags_recommended, rolling_windows, clip_return_at, volume_skewed, strong_autocorr, vol_of_vol_regime_shift, weekday_drift.
+
+Finish in ≤ 90 s using pandas, numpy, scipy, matplotlib, seaborn, statsmodels.
+
+What NOT to do
+
+Never modify the clean CSVs.
+
+Avoid printing entire DataFrames.
+
+Skip heavy tests beyond ADF.
+
+Recommendations for a lower RMSE
+
+Clip extreme Target_return values to ± 0.20.
+
+Log-transform Volume if highly skewed.
+
+Include Lag-1 Target_return when autocorrelation is strong.
+
+Pass the regime-shift flag to downstream agents.
+
+3 Summary artefacts
+• EDA.py • eda_outputs/meta.json • eda_outputs/summary.txt
+• eda_outputs/correlation.png • eda_outputs/target_hist.png • eda_outputs/rolling_vol.png
+
+🛠 Prompt 2 FeatureEngineering_Agent
+1 Input files
+• /data/train_clean.csv, /data/val_clean.csv, /data/test_clean.csv
+• eda_outputs/meta.json • eda_outputs/summary.txt
+
+2 Actions
+
+What to do
+
+Ingest meta.json values.
+
+Convert Date to index; keep ascending order.
+
+Engineer leakage-safe features:
+• Close lags for each recommended lag.
+• Lag 1 of Target_return if strong_autocorr.
+• Rolling and EWMA stats for Close & Volume (windows 5, 10, 20; spans 5 & 20).
+• Percentage changes of Close & Volume.
+• RSI-14, MACD diff, Bollinger-band width, ATR-14.
+• Weekday & month one-hot dummies.
+• VWAP proxy.
+• Volume z-score and log1p(Volume) when volume_skewed is true.
+• Interaction: lag_1_Close × RSI-14.
+• Weekday-demeaned Target_return and five-day realised-vol z-score.
+• sample_w column: 1.0 everywhere unless vol-of-vol indicates a regime shift, in which case up-weight recent rows.
+
+Clip Target_return to ± clip_return_at.
+
+Forward-fill then back-fill; drop residual NaNs.
+
+Fit a min–max scaler on training predictors; reuse for val & test.
+
+Keep identical column order in all *_features.csv files.
+
+What NOT to do
+
+No look-ahead in rolling or shifts.
+
+Don’t fit separate scalers per split.
+
+Remove predictors with > 30 % missing or near-zero variance.
+
+Recommendations for a lower RMSE
+
+Stay under ~150 predictors.
+
+EWMA stats help in volatile regimes.
+
+Preserve sample_w for the modelling stage.
+
+3 Summary artefacts
+• FEATURE.py • /data/train_features.csv, /data/val_features.csv, /data/test_features.csv
+• eda_outputs/final_features.json • eda_outputs/scaler.json
+
+🤖 Prompt 3 Modelling_Agent
+1 Input files
+• /data/train_features.csv
+• /data/val_features.csv
+• eda_outputs/final_features.json
+
+2 Actions
+
+What to do
+
+Fix random seed to 42.
+
+Split predictors (from final_features.json) and Target_return label.
+
+Use sample_w from the feature files as observation weights.
+
+Train two base models:
+• LightGBM Regressor with 40-trial hyper-parameter search (time-series CV, early stopping).
+• ExtraTrees Regressor with 600 trees.
+
+Train a linear meta-model on validation predictions from both base models.
+
+Report validation RMSE, MAE, R² once.
+
+Save a dictionary bundle containing base models and the meta-model.
+
+What NOT to do
+
+No shuffled CV folds.
+
+Don’t over-train; rely on early-stopping.
+
+Avoid GPU-only libraries.
+
+Recommendations for a lower RMSE
+
+Combine slow-learn GBM with high-variance trees and stack linearly.
+
+Learning rate ≤ 0.05 with many trees usually beats a higher rate.
+
+Volatility-inverse weights focus loss where the metric cares most.
+
+3 Summary artefacts
+• MODEL.py • model.pkl (estimators + meta) • model_meta.json
+
+🧪 Prompt 4 Evaluation_Agent
+1 Input files
+• model.pkl
+• /data/test_features.csv
+• eda_outputs/final_features.json
+
+2 Actions
+
+What to do
+
+Load model.pkl; if it is not a dictionary, wrap it accordingly.
+
+Align test predictors to final_features.json.
+
+If a meta-model exists, feed it base-model predictions; else average with stored or equal weights.
+
+Compute RMSE between predictions and true Target_return.
+
+Output MSFT_Score.txt with “RMSE: x.xxxxx” (five decimals).
+
+Create evaluation_log.json with timestamp, test-row count, RMSE and estimator keys.
+
+Print RMSE once; finish in ≤ 30 s.
+
+What NOT to do
+
+Never modify test_features.csv.
+
+No extra metrics or DataFrame dumps.
+
+Always check the pickle type before indexing.
+
+Recommendations for a lower RMSE
+
+Verify predictor order and scaling match those used in training.
+
+Optionally clip extreme predictions to ± clip_return_at.
+
+3 Summary artefacts
+• EVAL.py • MSFT_Score.txt • evaluation_log.json
