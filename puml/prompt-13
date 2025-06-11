@@ -186,3 +186,87 @@ Optionally clip extreme predictions to ± clip_return_at.
 
 3 Summary artefacts
 • EVAL.py • MSFT_Score.txt • evaluation_log.json
+
+------------------------------
+
+
+─────────────────────────────────────────
+🤖  PROMPT 3 — MODELLING_AGENT
+─────────────────────────────────────────
+
+1. INPUT FILES
+   • /data/train_features.csv
+   • /data/val_features.csv
+   • eda_outputs/final_features.json   (ordered list of PREDICTOR columns only)
+
+─────────────────────────────────────────
+2. ACTIONS
+─────────────────────────────────────────
+WHAT TO DO
+• Set a global random seed of 42.
+• Load final_features.json → predictor_list.
+• Read the training and validation CSVs.
+  – Target column is “Target_return” (in the CSVs, NOT in predictor_list).
+  – Build:
+      X_train = train_df[predictor_list]
+      y_train = train_df["Target_return"]
+      X_val   = val_df[predictor_list]
+      y_val   = val_df["Target_return"]
+  – Extract sample_w from each DataFrame
+      (use 1.0 everywhere if the column does not exist).
+
+• Train two base models:
+  1) LightGBMRegressor
+     · Hyper-parameter search with 40 trials
+       (Optuna if available, otherwise RandomizedSearchCV).
+     · TimeSeriesSplit of 3 folds.
+     · Early stopping after 50 rounds.
+  2) ExtraTreesRegressor
+     · 600 trees
+     · max_features = "sqrt"
+     · min_samples_leaf = 2
+     · full depth, n_jobs = -1.
+
+• Stack the base models:
+  – Get validation predictions from both learners.
+  – Fit an ordinary least-squares LinearRegression meta-model on
+      [pred_lgbm , pred_etr]  →  y_val.
+
+• Evaluate once on the validation set; print RMSE, MAE, and R².
+
+• Save a bundle to model.pkl (via joblib):
+      {
+        "estimators": {"lgbm": <LightGBM>, "etr": <ExtraTrees>},
+        "meta": <LinearRegression>
+      }
+
+• Create model_meta.json with:
+    { "val_metrics": {...},
+      "best_params": {...},
+      "timestamp_utc": "<ISO-8601>" }
+
+• Time limit ≤ 10 minutes; memory ≤ 4 GB.
+  Allowed libraries: pandas, numpy, scikit-learn, lightgbm, joblib,
+  optuna (optional).
+
+─────────────────────────────────────────
+WHAT NOT TO DO
+• Do NOT shuffle rows in cross-validation: always preserve time order.
+• Do NOT train until zero loss; rely on early stopping.
+• Avoid GPU-only libraries or CUDA-dependent code.
+
+─────────────────────────────────────────
+RECOMMENDATIONS FOR LOWER RMSE
+• Use learning_rate ≤ 0.05 with plenty of trees — usually beats higher rates.
+• Stacking LightGBM (bias-strong) with ExtraTrees (variance-strong) plus
+  a linear meta-model often cuts a few basis points off RMSE.
+• Apply inverse-volatility sample weights (1/(|Target_return|+0.001)) to
+  reduce the influence of crash days on training loss.
+
+─────────────────────────────────────────
+3. SUMMARY ARTEFACTS
+   • MODEL.py           (self-running, self-debugging)
+   • model.pkl          (dict with keys: estimators, meta)
+   • model_meta.json
+─────────────────────────────────────────
+
