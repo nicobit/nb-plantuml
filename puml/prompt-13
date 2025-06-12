@@ -430,4 +430,82 @@ RECOMMENDATIONS FOR LOWER RMSE
    • model.pkl       (dict: estimators + meta)
    • model_meta.json
 ────────────────────────────────────────────────────────
+##################################################
+
+**Prompt text for `FeatureEngineering_Agent`**
+*(plain text – ready to copy-paste into your framework, no code blocks)*
+
+---
+
+### 1  Input artefacts
+
+* `/data/train_clean.csv`, `/data/val_clean.csv`, `/data/test_clean.csv`
+* `eda_outputs/meta.json`
+* `eda_outputs/summary.txt`
+
+---
+
+### 2  Actions to perform
+
+1. **Ingest meta-data**
+
+   * Load every key in `meta.json` (e.g. `lag_recos`, `clip_return_at`, `strong_autocorr`, `volume_skewed`, `vol_of_vol_flag`).
+
+2. **Date handling**
+
+   * Parse the `Date` column to a `DatetimeIndex`; keep rows in **ascending** order.
+
+3. **Leakage-safe feature engineering**
+
+   * **Never overwrite the original `Target_Return` column.**
+   * If clipping is required (`clip_return_at`), create a new column `Target_Return_clipped`.
+   * Generate features:
+     • Close lags for each lag in `lag_recos`.
+     • Lag-1 of `Target_Return` (only if `strong_autocorr` is true).
+     • Rolling means, stds, and EWMA stats for **Close** and **Volume** (windows 5/10/20; spans 5&20).
+     • Percentage changes of **Close** and **Volume**.
+     • Technical indicators – RSI-14, MACD diff, Bollinger-band width, ATR-14 – **then shift(1)** so the value at time *t* uses data ≤ *t*.
+     • Weekday and month one-hot dummies.
+     • VWAP proxy.
+     • When `volume_skewed` is true: `Volume_zscore` and `log1p(Volume)`.
+     • Interaction term: `lag_1_Close × RSI_14_shifted`.
+     • Weekday-demeaned `Target_Return` and 5-day realised-volatility z-score.
+     • Sampling weight `sample_w` (default 1.0; up-weight recent rows when `vol_of_vol_flag` is true).
+
+4. **Missing-value policy**
+
+   * Forward-fill, then back-fill; drop any remaining NaNs.
+   * Remove predictors with > 30 % missing **before** the fill or with near-zero variance.
+
+5. **Scaling**
+
+   * Fit a single Min–Max scaler **only on training predictors**.
+   * Re-use the same scaler for validation and test; save to `eda_outputs/scaler.json`.
+
+6. **Feature set size**
+
+   * Limit to **≈ 150 predictors**; drop least-informative extras if necessary.
+
+7. **Output artefacts**
+
+   * Produce `FEATURE.py` (self-contained, includes its own run-and-debug loop).
+   * Write `/data/train_features.csv`, `/data/val_features.csv`, `/data/test_features.csv` with identical column order.
+   * Save `eda_outputs/final_features.json` (list of kept feature names, scaler path, clipping info).
+
+---
+
+### 3  What *not* to do
+
+* No look-ahead in any rolling, shifting, or indicator calculation.
+* Do **not** fit separate scalers per split.
+* Do **not** alter or drop the original `Target_Return` column.
+* Keep predictor count ≤ 150 and avoid any future data leakage.
+
+---
+
+### 4  Tips for lower RMSE
+
+* EWMA features often help in volatile regimes.
+* Preserve `sample_w` for the `Modelling_Agent`.
+* A smaller, cleaner feature set usually outperforms a very large one.
 
