@@ -53,13 +53,16 @@ Mandatory indicators (no look-ahead):
 • High_Low_Range, Close_Open_Diff, Pct_Close_Open
 
 Add boosters:
-• Target_lag1
+• PrevRet_1  (one-day lag of Target_Return; name MUST NOT contain the word “target”)
 • MACD (EMA12−EMA26) and MACD_signal (EMA9 of MACD)
 • DayOfWeek_sin, DayOfWeek_cos  (encode calendar effect)
 
 Processing rules:
 • Use pandas rolling/ewm; NaNs from initial windows — keep and let model ignore.
-• **Do not scale** (tree model later).  
+• **Do not scale** (tree model later).
+• After computing new columns, set `Date` as the index (`df.set_index('Date', inplace=True)`)
+  **and leave it OUT of the saved *_features.csv** (include only numeric predictors + Target_Return).
+
 Save *_features.csv (train/val/test) incl. Target_Return.  
 Print list(df.columns) and finish with “Feature engineering completed”.
 ```
@@ -75,18 +78,19 @@ Goal ▸ write MODEL.py, run it, debug until “Model training completed”.
 
 Workflow:
 1. Read train_features.csv & validation_features.csv.
-2. Drop rows with NaNs in X or y.
-3. TimeSeriesSplit(n_splits=3, gap=0).  
+2. Ensure no non-numeric columns remain:  
+3. Drop rows with NaNs in X or y.
+4. TimeSeriesSplit(n_splits=3, gap=0).  
    Evaluate RMSE via cross_val_score (neg_root_mean_squared_error).
-4. Models:
+5. Models:
    • LinearRegression (baseline)
    • RandomForestRegressor(n_estimators=200, max_depth=None, random_state=42)
    • LightGBMRegressor(objective='regression', learning_rate=0.05,
        n_estimators=1_000, num_leaves=31, subsample=0.8, colsample_bytree=0.8,
        random_state=42, early_stopping_rounds=50)
-5. Pick lowest mean-CV RMSE.  If >0.010, build weight-0.8 LightGBM + 0.2 LinearRegression ensemble.
-6. Retrain winner on train+val combined; save best_model.pkl with joblib.
-7. Print “Best model: …, CV-RMSE = …” then “Model training completed”.
+6. Pick lowest mean-CV RMSE.  If >0.010, build weight-0.8 LightGBM + 0.2 LinearRegression ensemble.
+7. Retrain winner on train+val combined; save best_model.pkl with joblib.
+8. Print “Best model: …, CV-RMSE = …” then “Model training completed”.
 ```
 
 *(LightGBM fallback: if `import lightgbm` fails, switch to `HistGradientBoostingRegressor`.)*
