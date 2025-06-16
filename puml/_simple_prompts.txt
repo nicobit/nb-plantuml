@@ -78,3 +78,115 @@ Tasks
 5. Save /eval/summary.json (all metrics + champion) and /eval/predictions.csv (date, actual, predicted).
 6. Self-test: ensure both files exist and row counts match test set.
 7. Log "Evaluation_Agent SUCCESS"
+
+
+
+""""""""""""""""""""""""""""""""""""""
+
+
+High-level requirements
+
+
+
+
+
+Auto-install, if missing: scikit-learn, xgboost, lightgbm, catboost, optuna, joblib, pandas, numpy, dask[distributed], ray, logging.
+Load /features/feature_train.csv, /features/feature_val.csv, and /feature_outputs/final_features.json.
+Split predictors (X) and label target_return.
+• Verify that target_return is not inside the predictor set; if it is, log an ERROR and halt.
+
+
+
+
+
+
+Optuna optimisation – “smart & incremental” strategy
+
+
+
+
+
+Create a shared Optuna study stored in local SQLite (for example sqlite:///optuna_study.db).
+Use the advanced TPESampler with multivariate=True as the sampler.
+Attach a MedianPruner (or SuccessiveHalving if available) with a warm-up of 10 steps, so weak trials stop early.
+Run trials in parallel: set n_jobs to the number of CPU cores; if the environment variables DASK_SCHEDULER or RAY_ADDRESS are present, switch automatically to the Dask or Ray executor.
+
+
+
+
+
+
+Trial budget and incremental loop
+
+
+
+
+
+Phase 1 – launch 10 trials. After they finish:
+• If the best validation RMSE is ≤ 0.010, save everything and exit with SUCCESS.
+• Otherwise, save the study and metrics, log INFO “target not reached, continuing”.
+Phase 2, 3, … – reopen the same study and launch extra blocks of 5 trials each (still parallel, same sampler and pruner) until:
+• RMSE ≤ 0.010 or
+• the total number of completed trials reaches 30.
+If 30 trials are reached without hitting the target, raise RuntimeError("RMSE target not met after 30 trials").
+
+
+
+
+
+
+Models tuned in each trial
+
+
+
+
+
+CatBoostRegressor with loss function RMSE, thread_count = CPU cores.
+LGBMRegressor with objective “regression”, metric “rmse”, n_jobs = CPU cores.
+XGBRegressor with objective “reg:squarederror”, n_jobs = CPU cores.
+
+
+
+
+
+
+Unified early stopping rules
+
+
+
+
+
+Use 20 rounds of early stopping, respecting each library’s syntax:
+• CatBoost – eval_set as a tuple (X_val, y_val) plus early_stopping_rounds.
+• LightGBM – eval_set as a list [(X_val, y_val)], eval_metric="rmse", plus early_stopping_rounds.
+• XGBoost – eval_set as a list [(X_val, y_val)], eval_metric="rmse", plus early_stopping_rounds.
+• For any model that lacks early-stopping support, fit normally without those parameters.
+
+
+
+
+
+
+Fallback ensemble
+
+
+
+
+
+When the incremental loop ends, if the best RMSE is still > 0.010, train a StackingRegressor on the three tuned models and evaluate it.
+• If the stacker achieves RMSE ≤ 0.010, treat it as the winning model; otherwise raise the runtime error described above.
+
+
+
+
+
+
+Saving and logging
+
+
+
+
+
+Save every tuned model as a .pkl file in /models/ and write /models/metrics.json containing the best RMSE, winning hyper-parameters, and (if applicable) details of the stacker.
+Use structured logging: INFO for trial start/end, intermediate RMSE, saves; WARNING for trials that run more than twice the median duration; ERROR for exceptions with automatic retry.
+On successful completion log Modeling_Agent SUCCESS — best_val_rmse=<value>.
