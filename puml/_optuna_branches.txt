@@ -1,0 +1,55 @@
+Functional requirements
+
+
+
+Imports & installation
+Install or import: optuna, xgboost, lightgbm, catboost, numpy, sklearn.model_selection.train_test_split, and sklearn.metrics.root_mean_squared_error (fallback to np.sqrt(mean_squared_error) if the function is unavailable).
+Import Optuna pruning callbacks:
+XGBoostPruningCallback, LightGBMPruningCallback, CatBoostPruningCallback.
+
+Data split
+Accept arrays or a pandas DataFrame X, y.
+Perform an 80 / 20 train_test_split with random_state=42.
+
+Optuna objective
+Each trial first chooses model_type from ['xgboost','lightgbm','catboost'].
+XGBoost branch
+Sample core params (max_depth, learning_rate, lambda, alpha, etc.).
+Convert data to DMatrix.
+Train with
+num_boost_round=1000
+evals=[(dvalid,"valid")]
+early_stopping_rounds=50
+callbacks=[XGBoostPruningCallback(trial,"validation-rmse")].
+
+
+LightGBM branch
+Sample params (num_leaves, learning_rate, feature_fraction, etc.).
+Build Dataset objects.
+Train with
+num_boost_round=1000
+valid_sets=[dvalid]
+callbacks=[lightgbm.early_stopping(stopping_rounds=50), LightGBMPruningCallback(trial,"rmse")].
+
+
+CatBoost branch
+Sample params (depth, learning_rate, etc.).
+Instantiate CatBoostRegressor(iterations=1000, early_stopping_rounds=50, verbose=0, **params).
+Fit with eval_set=(X_valid,y_valid) and callbacks=[CatBoostPruningCallback(trial,"RMSE")].
+
+For every branch, compute validation RMSE via root_mean_squared_error (or manual sqrt) and return it as the objective value.
+
+Study setup & execution
+Create a study with direction="minimize" and MedianPruner(n_warmup_steps=5).
+Optimise for n_trials=100 or timeout=3600 s, whichever comes first.
+After optimisation, print the best trial number, RMSE, model type, and parameter set.
+
+Reproducibility & clarity
+Fix global random seed to 42.
+Include a concise if __name__ == "__main__": guard so the script can be run directly.
+
+
+
+
+
+Provide runnable Python code only—no markdown code fences, no explanatory commentary.
