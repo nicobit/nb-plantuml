@@ -1,0 +1,41 @@
+1. Load the training and validation datasets.
+
+2. Ensure the target column `Target_Return` is correctly isolated.
+
+3. For each raw feature (Date, Open, High, Low, Close, Volume):
+
+   - Create lag features (e.g., previous day values)
+
+   - Compute rolling statistics (mean, std, min, max) over 3, 7, 14-day windows
+
+   - Compute percentage change and momentum indicators
+
+   - Add binary features like `is_month_start`, `is_month_end`
+
+4. Parse the `Date` column into:
+
+   - Year, month, day
+
+   - Day of week (e.g., Monday)
+
+   - Whether it's month start/end (binary flags)
+
+5. Drop any constant, duplicated, or low-variance features.
+
+6. Compute correlation with `Target_Return` and keep only features with meaningful correlation (e.g., abs(corr) > 0.05).
+
+7. Save the final feature list to `eda_outputs/final_features.json` and output the processed train and validation datasets to `/features/`.
+
+
+
+**Constraints:**
+
+- Avoid features that cause LightGBM to fail with "no further splits with positive gain".
+
+- Exclude all identifier columns or non-numeric strings unless converted to category.
+
+- If date parsing fails, drop the column or log the issue.
+
+- Ensure numeric stability by filling NaNs using forward fill or zeros, and clipping outliers.
+
+- Include proper logging for each transformation step.
