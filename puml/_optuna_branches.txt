@@ -53,3 +53,102 @@ Include a concise if __name__ == "__main__": guard so the script can be run dire
 
 
 Provide runnable Python code only—no markdown code fences, no explanatory commentary.
+
+-----------------------
+
+
+Imports & Installation Requirements
+Install or import: optuna, xgboost, lightgbm, catboost, numpy, scikit-learn’s train_test_split and root_mean_squared_error (fallback to np.sqrt(mean_squared_error)). 
+scikit-learn.org
+scikit-learn.org
+
+Import Optuna pruning helpers:
+
+XGBoostPruningCallback 
+optuna.readthedocs.io
+
+LightGBMPruningCallback 
+optuna.readthedocs.io
+
+CatBoostPruningCallback 
+optuna.readthedocs.io
+
+Data Preparation
+Accept X, y as NumPy arrays or a pandas DataFrame.
+
+Create an 80 / 20 train-validation split with random_state=42 using train_test_split. 
+scikit-learn.org
+
+Optuna Objective Logic
+Shared Structure
+Each trial first samples model_type from ['xgboost', 'lightgbm', 'catboost'].
+
+After training, compute the validation RMSE with root_mean_squared_error; if that function is absent (scikit-learn < 1.4), compute np.sqrt(mean_squared_error). 
+scikit-learn.org
+scikit-learn.org
+
+Return this RMSE to Optuna as the trial’s objective value.
+
+XGBoost Regressor Branch
+Sample core hyper-parameters such as max_depth, learning_rate, lambda, alpha, subsample, colsample_bytree, and min_child_weight.
+
+Convert the data to an xgboost.DMatrix. 
+xgboost.readthedocs.io
+
+Train with
+
+num_boost_round=1000
+
+evals=[(dvalid, "valid")]
+
+early_stopping_rounds=50
+
+callbacks=[XGBoostPruningCallback(trial, "validation-rmse")]. 
+optuna.readthedocs.io
+
+LightGBM Regressor Branch
+Sample parameters such as num_leaves, learning_rate, feature_fraction, bagging_fraction, bagging_freq, min_child_samples, lambda_l1, and lambda_l2.
+
+Wrap data in lightgbm.Dataset objects. 
+lightgbm.readthedocs.io
+
+Train with
+
+num_boost_round=1000
+
+valid_sets=[dvalid]
+
+callbacks=[lightgbm.early_stopping(stopping_rounds=50), LightGBMPruningCallback(trial, "rmse")]. 
+optuna.readthedocs.io
+
+CatBoost Regressor Branch
+Sample parameters such as depth, learning_rate, l2_leaf_reg, bagging_temperature, and random_strength.
+
+Instantiate CatBoostRegressor(iterations=1000, early_stopping_rounds=50, verbose=0, **params). 
+optuna.readthedocs.io
+
+Fit with eval_set=(X_valid, y_valid) and callbacks=[CatBoostPruningCallback(trial, "RMSE")].
+
+Study Configuration & Execution
+Create the study with direction="minimize" and MedianPruner(n_warmup_steps=5) to drop unpromising trials early. 
+optuna.readthedocs.io
+
+Run study.optimize for n_trials=100 or timeout=3600 s, whichever occurs first. 
+optuna.readthedocs.io
+
+After optimisation, output:
+
+best trial number,
+
+best RMSE,
+
+chosen model type,
+
+full hyper-parameter set.
+
+Reproducibility & Script Structure
+Set numpy, Python random, and os.environ['PYTHONHASHSEED'] to 42 before any sampling for deterministic behaviour.
+
+Wrap executable code in an if __name__ == "__main__": block to allow seamless import or direct execution.
+
+This reviewed prompt cleanly specifies every step required to optimise and compare gradient-boosting regressors with Optuna while ensuring consistent results and clear output.
