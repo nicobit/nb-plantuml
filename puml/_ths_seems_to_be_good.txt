@@ -1,3 +1,6 @@
+• Parse Date once, sort each split in strict ascending order, set it as the index for every feature dataframe, and exclude the raw Date column from the saved CSVs. From this point on every column must be purely numeric; downstream agents will rely on the index for alignment and on the absence of non-numeric columns for modelling and evaluation.
+
+
 Below is a clean separation between the **System** message (sets the agent’s identity, operating principles and global constraints) and the **Prompt** message (gives the concrete work order) for each of the four agents.
 Everything is pure prose—no code blocks, no inline snippets.
 
