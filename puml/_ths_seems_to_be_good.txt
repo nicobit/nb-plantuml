@@ -1,3 +1,107 @@
+Good catch — if the column in *train\_clean.csv* (and the other splits) is really called **`Target_return`**, then every agent prompt should reference that exact name so the code runs without errors. Below is a clean set of agent instructions with the target column corrected everywhere.
+
+---
+
+### ExploratoryAnalyst (AKA EDA\_Agent)
+
+**Files to read**
+
+* `data/train_clean.csv` *(main focus)*
+* `data/val_clean.csv` *(for comparison)*
+* `data/test_clean.csv` *(for context)*
+
+**Files to create**
+
+* `EDA.py` (executable)
+* `/reports/eda_summary.txt`
+* all plots/tables inside `/reports/`
+
+**Tasks**
+
+1. Parse the **`Date`** column as a true `datetime` index and sort ascending.
+2. Inspect missing values, distributions, extreme values, seasonality signals and relationships with the target column **`Target_return`**.
+3. Flag any issues that could cause leakage or errors during rolling-window calculations.
+4. Save, run and self-debug `EDA.py`; confirm all artefacts land in `/reports`.
+
+> *Environment note*: add a brief install step for pandas, numpy, matplotlib, seaborn if imports fail.
+
+---
+
+### FeatureEngineering\_Agent
+
+**Files to read**
+
+* `data/train_clean.csv`, `data/val_clean.csv`, `data/test_clean.csv`
+
+**Files to create**
+
+* `FEATURE.py`
+* `train_features.csv`, `val_features.csv`, `test_features.csv` → place in `/features` (or `/data`)
+* `feature_log.txt` listing final column names in order
+
+**Tasks**
+
+1. **Date handling** – parse, sort, keep splits untouched.
+2. **Initial feature set** – concise look-backs (lags, rolls, technicals), calendar one-hots, sine/cosine.
+3. **Leakage protection** – use only history; drop warm-up rows.
+4. **Feature pruning** – baseline model → permutation importance on validation **`Target_return`**; drop noise-level features.
+5. Save artefacts, run and auto-debug `FEATURE.py`.
+
+> *Environment note*: install extras (pandas-ta, ta-lib, scikit-learn, shap) on-the-fly if missing.
+
+---
+
+### Modelling\_Agent
+
+**Files to read**
+
+* `train_features.csv`, `val_features.csv`
+
+**Files to create**
+
+* `MODEL.py`
+* `final_model.pkl` (or `.joblib`)
+* `val_predictions.csv` (optional)
+
+**Tasks**
+
+* Train several time-series-friendly regressors (GBMs, regularised linear, etc.) to predict **`Target_return`**.
+* During tuning, use feature-subsampling/regularisation to avoid overfitting sparse columns.
+* Select the model with lowest validation RMSE, persist it with any preprocessing, discard the rest.
+* Run `MODEL.py` end-to-end, auto-patching errors.
+
+> *Environment note*: install xgboost, lightgbm, scikit-learn, joblib as needed.
+
+---
+
+### Evaluation\_Agent
+
+**Files to read**
+
+* `test_features.csv`
+* `final_model.pkl`
+
+**Files to create**
+
+* `EVAL.py`
+* `MSFT_Score.txt` containing exactly: `RMSE: <float_value>`
+* `test_predictions.csv` (optional)
+
+**Tasks**
+
+* Load the frozen model, apply it only to `test_features.csv`, compute RMSE versus the actual **`Target_return`** column.
+* Print the RMSE, write the identical value to `MSFT_Score.txt`, and verify the file matches.
+* Execute and self-debug `EVAL.py`, confirming correct date alignment and feature order.
+
+> *Environment note*: ensure joblib, scikit-learn, pandas, etc. are present.
+
+---
+
+These edits should eliminate any confusion and prevent a column-name error later in the pipeline. Let me know if anything else needs tweaking!
+
+
+-------------------------------------------
+------------------------------------------
 You are the exploratory analyst for this workflow.
 
 Files to read
